@@ -1,0 +1,76 @@
+{% extends "./index.html" %}
+{% load i18n %}
+{% block title %}{% trans "My " %}{{ behavior_name }}{% endblock title %}
+{% block content %}
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__bd">
+  {% for behavior in behavior_list %}
+  <div class="weui-cell weui-cell_access" id="{{ behavior.id }}" title="{{ behavior.lecture.meeting.number }}">
+      <div class="weui-cell__hd"><img src="{{ MEDIA_URL }}{{ behavior.lecture.speaker.picture }}" alt="" style="width:20px;margin-right:5px;display:block"></div>
+      <div class="weui-cell__bd weui-cell_primary">
+        <p>
+        {% blocktrans with number=behavior.lecture.meeting.number speaker_name=behavior.lecture.speaker.name %}
+        The {{ number }} Meeting: {{ speaker_name }}, {% endblocktrans %}{{ behavior.lecture.topic }}
+        </p>
+      </div>
+    </div>
+  {% empty %}
+  {% endfor %}
+  </div>
+</div>
+{% endblock content %}
+{% block js %}
+{{ block.super }}
+<script>
+$(".weui-cell").bind("click", function() {
+  var behavior = this
+  weui.actionSheet([
+    {
+      label: "{% trans "View Lecture Detail" %}",
+      onClick: function() {
+        let url = "{% url 'lectures.lecture_detail' 0 %}".replace("0", behavior.title);
+        window.location.replace(url);
+      }
+    },
+    {
+      label: "{% trans "Delete This" %}",
+      onClick: function() {
+        let url = "{% url 'feedbacks.delete_behavior_by_id' 0 %}".replace("0", behavior.id);
+        $.get(
+          url,
+          function(data){
+            if (data["status"] === "200"){
+              $(behavior).hide();
+            } else {
+            }
+          },
+          "json"
+        );
+      }
+    },
+    {
+      label: "{% trans "Delete All" %}",
+      onClick: function() {
+        let url = "{% url 'feedbacks.delete_behavior_by_name' 0 %}".replace("0", "{{ behavior }}");
+        $.get(
+          url,
+          function(data){
+            if (data["status"] === "200"){
+              $(".weui-cell").hide();
+            } else {
+            }
+          },
+          "json"
+        );
+      }
+    }
+  ], [
+    {
+      label: "{% trans "Cancel" %}",
+      onClick: function() {
+      }
+    }
+  ]);
+});
+</script>
+{% endblock js %}

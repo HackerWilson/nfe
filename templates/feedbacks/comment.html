@@ -1,0 +1,66 @@
+{% extends "./index.html" %}
+{% load i18n %}
+{% block title %}{% trans "Add Comment" %}{% endblock title %}
+
+{% block content %}
+{% include "./common.html" %}
+<div class="weui-panel">
+  <div class="weui-panel__bd">
+    <form action="{% url 'feedbacks.add_comment' lecture.id %}" method="post">
+      {% csrf_token %}
+      <div class="weui-cell weui-cell_vcode">
+        <div class="weui-cell__hd">
+          <label class="weui-label">{% trans "Scored: " %}</label>
+        </div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="number" name="score" id="id_score" min="0" required>
+        </div>
+        <div class="weui-cell__ft">
+          <a href="javascript:;" class="weui-vcode-btn" id="score-btn">{% trans "Click to Score" %}</a>
+        </div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="{% trans "Please enter your comment: " %}" rows="12" name="detail" id="id_detail" maxlength="200" required></textarea>
+        <div>
+      <div>
+      <div class="weui-btn-area">
+        <input type="submit" class="weui-btn weui-btn_primary">
+      <div>
+    </form>
+  </div>
+</div>
+{% endblock content %}
+
+{% block tabbar %}
+{% endblock tabbar %}
+
+{% block js %}
+{{ block.super }}
+<script>
+$("#score-btn").click(function(){
+  weui.picker([
+    {
+      label: '一般',
+      value: 3,
+    },
+    {
+      label: '好评',
+      value: 5
+    },
+  ], {
+    defaultValue: [5],
+    onChange: function (result) {
+      $("#id_score").attr("value", result[0].value);
+    },
+    onConfirm: function (result) {
+      $("#id_score").attr("value", result[0].value);
+    },
+    id: 'singleLinePicker'
+  });
+});
+$("form").submit(function(){
+  weui.toast("{% trans "Submit Success!" %}", 500);
+});
+</script>
+{% endblock js %}

@@ -1,0 +1,60 @@
+{% extends "./index.html" %}
+{% load i18n %}
+{% block content %}
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__hd">{% trans "Living" %}</div>
+  <div class="weui-panel__bd">
+  {% for record in record_list %}
+    {% if not record.lecture.is_finished %}
+    <a href="{{ record.lecture.url }}" class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <img class="weui-media-box__thumb" src="{{ MEDIA_URL }}{{ record.lecture.speaker.picture }}" alt="">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">{% blocktrans with number=record.lecture.meeting.number %}The {{ number }} Meeting: {% endblocktrans %}{{ record.lecture.topic }}</h4>
+        <p class="weui-media-box__desc">{{ record.lecture.speaker.intro }}</p>
+        <ul class="weui-media-box__info" style="color: black">
+          <li class="weui-media-box__info__meta">
+          {% blocktrans with month=record.lecture.time|date:"n" day=record.lecture.time|date:"j" time=record.lecture.time|time:"TIME_FORMAT" %}
+          Time: {{ month }} Month {{ day }} Day {{ time }}
+          {% endblocktrans %}
+          </li>
+        </ul>
+      </div>
+    </a>
+    {% endif %}
+  {% empty %}
+    <div class="weui-loadmore weui-loadmore_line">
+      <span class="weui-loadmore__tips">{% trans "Nothing Now" %}</span>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__hd">{% trans "Finished" %}</div>
+  <div class="weui-panel__bd">
+  {% for record in record_list %}
+    {% if record.lecture.is_finished %}
+    <div class="weui-media-box weui-media-box_small-appmsg">
+      <div class="weui-cells">
+        <a class="weui-cell weui-cell_access" href="{% url 'lectures.lecture_detail' record.lecture.id %}">
+          <div class="weui-cell__hd"><img src="{{ MEDIA_URL }}{{ record.lecture.speaker.picture }}" alt="" style="width:20px;margin-right:5px;display:block"></div>
+          <div class="weui-cell__bd weui-cell_primary">
+            <p>
+            {% blocktrans with number=record.lecture.meeting.number speaker_name=record.lecture.speaker.name %}
+            The {{ number }} Meeting: {{ speaker_name }}, {% endblocktrans %}{{ record.lecture.topic }}
+            </p>
+          </div>
+          <span class="weui-cell__ft"></span>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+  {% empty %}
+    <div class="weui-loadmore weui-loadmore_line">
+      <span class="weui-loadmore__tips">{% trans "Nothing Now" %}</span>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock content %}

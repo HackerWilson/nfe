@@ -1,0 +1,44 @@
+{% extends "./index.html" %}
+{% load i18n %}
+{% block navbar %}
+<div class="weui-navbar" id="navbar-tab">
+{% for category in category_list %}
+  <div class="weui-navbar__item">
+    {{ category.name }}
+  </div>
+{% empty %}
+{% endfor %}
+</div>
+{% endblock navbar %}
+
+{% block content %}
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__bd" id="panel-content">
+  </div>
+</div>
+{% endblock content %}
+{% block js %}
+{{ block.super }}
+<script>
+let loading = weui.loading('{% trans "loading" %}');
+setTimeout(function() {
+  loading.hide(function() {
+    let url = "{% url 'lectures.list_lectures' 1 %}";
+    $('#panel-content').load(url);
+  });
+});
+weui.tab('#navbar-tab',{
+  defaultIndex: 0,
+  onChange: function(index){
+    $('#panel-content').empty();
+    let loading = weui.loading('{% trans "loading" %}');
+    setTimeout(function() {
+      loading.hide(function() {
+        let url = "{% url 'lectures.list_lectures' 0 %}".replace('0', index + 1);
+        $('#panel-content').load(url);
+      });
+    });
+  }
+});
+</script>
+{% endblock js %}

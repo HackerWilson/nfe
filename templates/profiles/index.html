@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Profile" %}{% endblock title %}
+{% block js %}
+{{ block.super }}
+<script>
+$("#tabbar-tab0").removeClass("weui-bar__item_on")
+$("#tabbar-tab1").removeClass("weui-bar__item_on")
+$("#tabbar-tab2").addClass("weui-bar__item_on")
+</script>
+{% endblock js %}

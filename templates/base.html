@@ -1,0 +1,57 @@
+{% load i18n staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>{% block title %}{% trans "New Finance Explorer" %}{% endblock title %}</title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static "css/weui.min.css" %}"/>
+    <style>
+    html, body{
+      height: 100%;
+      background-color: #f8f8f8;
+    }
+    </style>
+    {% endblock css %}
+  </head>
+  <body>
+    <div class="weui-tab">
+      {% block navbar %}
+      {% endblock navbar %}
+      <div class="weui-tab__panel">
+        <div class="weui-tab__content" style="display: block;" id="tab-content">
+        {% block content %}
+        {% endblock content %}
+        </div>
+      </div>
+      {% block tabbar %}
+      {% include "tabbar.html" %}
+      {% endblock tabbar %}
+    </div>
+    {% block js %}
+    <script src="{% static "js/weui.min.js" %}"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="{% static "js/all.js" %}"></script> -->
+<script>
+weui.tab('#tabbar-tab',{
+  defaultIndex: 0,
+  onChange: function(index){
+    if(index == 0){
+      let url = "{% url 'root' %}";
+      window.location.replace(url);
+    }
+    if(index == 1){
+      let url = "{% url 'feedbacks.list_records' %}";
+      window.location.replace(url);
+    }
+    if(index == 2){
+      let url = "{% url 'profiles.show_profile' %}";
+      window.location.replace(url);
+    }
+  }
+});
+</script>
+    {% endblock js %}
+  </body>
+</html>

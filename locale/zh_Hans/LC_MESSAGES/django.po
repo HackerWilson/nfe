@@ -1,0 +1,372 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-23 22:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: accounts/admin.py:15
+msgid "Personal info"
+msgstr "个人信息"
+
+#: accounts/admin.py:16
+msgid "Permissions"
+msgstr "权限"
+
+#: accounts/admin.py:18
+msgid "Important dates"
+msgstr "重要日期"
+
+#: accounts/admin.py:19
+msgid "Extra info"
+msgstr "附加信息"
+
+#: accounts/models.py:12
+msgid "Business Card"
+msgstr "名片"
+
+#: accounts/models.py:15
+msgid "Phone Number"
+msgstr "手机"
+
+#: accounts/models.py:16
+msgid "Company Name"
+msgstr "公司"
+
+#: accounts/models.py:17
+msgid "Company Position"
+msgstr "职务"
+
+#: feedbacks/models.py:12
+msgid "Score"
+msgstr "评分"
+
+#: feedbacks/models.py:13 feedbacks/models.py:28
+msgid "Detail"
+msgstr "内容"
+
+#: feedbacks/models.py:14 feedbacks/models.py:29 feedbacks/models.py:52
+#: lectures/models.py:40 lectures/models.py:54
+msgid "Time"
+msgstr "时间"
+
+#: feedbacks/models.py:17 feedbacks/models.py:32 feedbacks/models.py:58
+msgid "Is Visible"
+msgstr "是否可见"
+
+#: feedbacks/models.py:20 feedbacks/models.py:21
+msgid "Comment"
+msgstr "评论"
+
+#: feedbacks/models.py:35 feedbacks/models.py:36
+msgid "Question"
+msgstr "问题"
+
+#: feedbacks/models.py:43
+msgid "Hidden"
+msgstr "屏蔽"
+
+#: feedbacks/models.py:44
+msgid "Favourite"
+msgstr "收藏"
+
+#: feedbacks/models.py:45
+msgid "Listened"
+msgstr "收听"
+
+#: feedbacks/models.py:54 feedbacks/models.py:63 feedbacks/models.py:64
+msgid "Behavior"
+msgstr "行为"
+
+#: lectures/models.py:11
+msgid "Name"
+msgstr "课程名"
+
+#: lectures/models.py:12
+msgid "Order"
+msgstr "排序"
+
+#: lectures/models.py:16 lectures/models.py:17
+msgid "Lecture Category"
+msgstr "课程分类"
+
+#: lectures/models.py:24
+msgid "Speaker"
+msgstr "讲师"
+
+#: lectures/models.py:25
+msgid "Speaker Info"
+msgstr "讲师信息"
+
+#: lectures/models.py:26
+msgid "Speaker Picture"
+msgstr "讲师照片"
+
+#: lectures/models.py:31 lectures/models.py:32
+msgid "Lecture Speaker"
+msgstr "课程讲师"
+
+#: lectures/models.py:39
+msgid "Number"
+msgstr "编号"
+
+#: lectures/models.py:41 lectures/models.py:56
+msgid "Info"
+msgstr "信息"
+
+#: lectures/models.py:42
+msgid "Is Offline"
+msgstr "是否线下"
+
+#: lectures/models.py:46 lectures/models.py:47
+msgid "Meeting Info"
+msgstr "会议信息"
+
+#: lectures/models.py:50
+msgid "Meeting"
+msgstr "会议"
+
+#: lectures/models.py:55
+msgid "Topic"
+msgstr "标题"
+
+#: lectures/models.py:57
+msgid "URL"
+msgstr "链接"
+
+#: lectures/models.py:61
+msgid "Is Finished"
+msgstr "是否已结束"
+
+#: lectures/models.py:64 lectures/models.py:65
+#: templates/lectures/lecture.html:48
+msgid "Lecture Info"
+msgstr "课程介绍"
+
+#: templates/base.html:7
+msgid "New Finance Explorer"
+msgstr "新金融前沿"
+
+#: templates/feedbacks/behaviors.html:3
+msgid "My "
+msgstr "我的"
+
+#: templates/feedbacks/behaviors.html:12
+#, python-format
+msgid ""
+"\n"
+"        The %(number)s Meeting: %(speaker_name)s, "
+msgstr ""
+"\n"
+"第%(number)s期： %(speaker_name)s，"
+
+#: templates/feedbacks/behaviors.html:29
+msgid "View Lecture Detail"
+msgstr "查看课程信息"
+
+#: templates/feedbacks/behaviors.html:36
+msgid "Delete This"
+msgstr "删除记录"
+
+#: templates/feedbacks/behaviors.html:52
+msgid "Delete All"
+msgstr "删除所有记录"
+
+#: templates/feedbacks/behaviors.html:69 templates/lectures/lecture.html:153
+msgid "Cancel"
+msgstr "取消"
+
+#: templates/feedbacks/comment.html:3 templates/feedbacks/comments.html:4
+msgid "Add Comment"
+msgstr "添加评论"
+
+#: templates/feedbacks/comment.html:13
+msgid "Scored: "
+msgstr "评分："
+
+#: templates/feedbacks/comment.html:19
+msgid "Click to Score"
+msgstr "点此评分"
+
+#: templates/feedbacks/comment.html:24
+msgid "Please enter your comment: "
+msgstr "请输入您的评论："
+
+#: templates/feedbacks/comment.html:63 templates/feedbacks/question.html:31
+msgid "Submit Success!"
+msgstr "提交成功！"
+
+#: templates/feedbacks/comments.html:17
+#: templates/feedbacks/user_comments.html:17
+msgid "Point"
+msgstr "分"
+
+#: templates/feedbacks/comments.html:27 templates/records/records.html:28
+#: templates/records/records.html:55
+msgid "Nothing Now"
+msgstr "暂时还没有内容"
+
+#: templates/feedbacks/common.html:9 templates/lectures/lecture.html:27
+#: templates/lectures/lectures.html:8 templates/records/records.html:14
+#, python-format
+msgid "The %(number)s Meeting: "
+msgstr "第%(number)s期："
+
+#: templates/feedbacks/common.html:13 templates/lectures/lecture.html:31
+#: templates/records/records.html:18
+#, python-format
+msgid ""
+"\n"
+"          Time: %(month)s Month %(day)s Day %(time)s\n"
+"          "
+msgstr ""
+"\n"
+"时间：%(month)s月%(day)s日 %(time)s\n"
+"          "
+
+#: templates/feedbacks/question.html:3 templates/lectures/lecture.html:58
+msgid "Add Question"
+msgstr "课程咨询"
+
+#: templates/feedbacks/question.html:13
+msgid "Please enter your question: "
+msgstr "请输入您的问题："
+
+#: templates/feedbacks/user_comments.html:3
+msgid "My Comments"
+msgstr "我的评论"
+
+#: templates/feedbacks/user_comments.html:11
+#: templates/feedbacks/user_questions.html:11
+#, python-format
+msgid ""
+"\n"
+"      The %(number)s Meeting: %(speaker_name)s, "
+msgstr ""
+"\n"
+"第%(number)s期：%(speaker_name)s，"
+
+#: templates/feedbacks/user_questions.html:3
+msgid "My Questions"
+msgstr "我的问题"
+
+#: templates/lectures/categories.html:23 templates/lectures/categories.html:34
+#: templates/lectures/lecture.html:96
+msgid "loading"
+msgstr "加载中"
+
+#: templates/lectures/index.html:3 templates/tabbar.html:5
+msgid "Lectures"
+msgstr "所有课程"
+
+#: templates/lectures/lecture.html:3
+msgid "Lecture Detail"
+msgstr "课程信息"
+
+#: templates/lectures/lecture.html:51
+msgid "Comments"
+msgstr "评论"
+
+#: templates/lectures/lecture.html:78
+msgid "Sign up"
+msgstr "进入直播"
+
+#: templates/lectures/lecture.html:120
+msgid "Add to Favorites"
+msgstr "添加到收藏"
+
+#: templates/lectures/lecture.html:127
+msgid "Add to Favorites Success!"
+msgstr "添加成功！"
+
+#: templates/lectures/lecture.html:136
+msgid "Hide This"
+msgstr "屏蔽该课程"
+
+#: templates/lectures/lecture.html:143
+msgid "Hide Success!"
+msgstr "屏蔽成功！"
+
+#: templates/lectures/lectures.html:12
+#, python-format
+msgid ""
+"\n"
+"      Time: %(month)s Month %(day)s Day %(time)s\n"
+"      "
+msgstr ""
+"\n"
+"时间：%(month)s月%(day)s日 %(time)s      "
+
+#: templates/profiles/index.html:3 templates/tabbar.html:13
+msgid "Profile"
+msgstr "个人中心"
+
+#: templates/profiles/profile.html:12
+msgid "Company: "
+msgstr "公司："
+
+#: templates/profiles/profile.html:13
+msgid "Position: "
+msgstr "职务："
+
+#: templates/profiles/profile.html:22
+msgid "Living Note"
+msgstr "直播须知"
+
+#: templates/profiles/profile.html:29
+msgid "Apply Living"
+msgstr "申请直播"
+
+#: templates/profiles/profile.html:38
+msgid "Favorites"
+msgstr "我收藏的"
+
+#: templates/profiles/profile.html:45
+msgid "Uninterested"
+msgstr "我屏蔽的"
+
+#: templates/profiles/profile.html:54
+msgid "Records History"
+msgstr "收听记录"
+
+#: templates/profiles/profile.html:61
+msgid "Comments History"
+msgstr "评论记录"
+
+#: templates/profiles/profile.html:68
+msgid "Questions History"
+msgstr "提问记录"
+
+#: templates/records/index.html:3 templates/tabbar.html:9
+msgid "Records"
+msgstr "收听记录"
+
+#: templates/records/records.html:5
+msgid "Living"
+msgstr "正在直播"
+
+#: templates/records/records.html:34
+msgid "Finished"
+msgstr "已结束"
+
+#: templates/records/records.html:44
+#, python-format
+msgid ""
+"\n"
+"            The %(number)s Meeting: %(speaker_name)s, "
+msgstr ""
+"\n"
+"第%(number)s期：%(speaker_name)s，"

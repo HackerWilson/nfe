@@ -1,0 +1,23 @@
+{% extends "./index.html" %}
+{% load i18n %}
+{% block title %}{% trans "My Questions" %}{% endblock title %}
+
+{% block content %}
+<div class="weui-panel">
+  <div class="weui-panel__bd">
+{% for question in question_list %}
+    <div class="weui-media-box weui-media-box_text">
+      <h4 class="weui-media-box__title">
+      {% blocktrans with number=question.lecture.meeting.number speaker_name=question.lecture.speaker.name %}
+      The {{ number }} Meeting: {{ speaker_name }}, {% endblocktrans %}{{ question.lecture.topic }}
+      </h4>
+      <p class="weui-media-box__desc">{{ question.detail }}</p>
+      <ul class="weui-media-box__info">
+        <li class="weui-media-box__info__meta">{{ question.time }}</li>
+      </ul>
+    </div>
+{% empty %}
+{% endfor %}
+  </div>
+</div>
+{% endblock content %}

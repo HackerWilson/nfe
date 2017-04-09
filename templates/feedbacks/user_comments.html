@@ -1,0 +1,24 @@
+{% extends "./index.html" %}
+{% load i18n %}
+{% block title %}{% trans "My Comments" %}{% endblock title %}
+
+{% block content %}
+<div class="weui-panel">
+  <div class="weui-panel__bd">
+{% for comment in comment_list %}
+    <div class="weui-media-box weui-media-box_text">
+      <h4 class="weui-media-box__title">
+      {% blocktrans with number=comment.lecture.meeting.number speaker_name=comment.lecture.speaker.name %}
+      The {{ number }} Meeting: {{ speaker_name }}, {% endblocktrans %}{{ comment.lecture.topic }}
+      </h4>
+      <p class="weui-media-box__desc">{{ comment.detail }}</p>
+      <ul class="weui-media-box__info">
+        <li class="weui-media-box__info__meta">{{ comment.time }}</li>
+        <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{ comment.score }} {% trans "Point" %}</li>
+      </ul>
+    </div>
+{% empty %}
+{% endfor %}
+  </div>
+</div>
+{% endblock content %}

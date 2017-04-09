@@ -1,0 +1,21 @@
+{% load i18n %}
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__bd">
+    <div class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <img class="weui-media-box__thumb" src="{{ MEDIA_URL }}{{ lecture.speaker.picture }}" alt="">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">{% blocktrans with number=lecture.meeting.number %}The {{ number }} Meeting: {% endblocktrans %}{{ lecture.topic }}</h4>
+        <p class="weui-media-box__desc">{{ lecture.speaker.intro }}</p>
+        <ul class="weui-media-box__info" style="color: black">
+          <li class="weui-media-box__info__meta">
+          {% blocktrans with month=lecture.time|date:"n" day=lecture.time|date:"j" time=lecture.time|time:"TIME_FORMAT" %}
+          Time: {{ month }} Month {{ day }} Day {{ time }}
+          {% endblocktrans %}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

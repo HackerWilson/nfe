@@ -1,0 +1,160 @@
+{% extends "./index.html" %}
+{% load i18n %}
+{% block title %}{% trans "Lecture Detail" %}{% endblock title %}
+
+{% block css %}
+{{ block.super }}
+<style>
+#signup-btn {
+  border-radius: 0px;
+  width: 100%;
+}
+#signup-btn:after {
+  border: 0px;
+  border-radius: 0px;
+}
+</style>
+{% endblock css %}
+
+{% block content %}
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__bd">
+    <a class="weui-media-box weui-media-box_appmsg" id="action-menu">
+      <div class="weui-media-box__hd">
+        <img class="weui-media-box__thumb" src="{{ MEDIA_URL }}{{ lecture.speaker.picture }}" alt="">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">{% blocktrans with number=lecture.meeting.number %}The {{ number }} Meeting: {% endblocktrans %}{{ lecture.topic }}</h4>
+        <p class="weui-media-box__desc">{{ lecture.speaker.intro }}</p>
+        <ul class="weui-media-box__info" style="color: black">
+          <li class="weui-media-box__info__meta">
+          {% blocktrans with month=lecture.time|date:"n" day=lecture.time|date:"j" time=lecture.time|time:"TIME_FORMAT" %}
+          Time: {{ month }} Month {{ day }} Day {{ time }}
+          {% endblocktrans %}
+          </li>
+          <li class="weui-media-box__info__meta">
+          评论数：20 评分：6
+          </li>
+        </ul>
+      </div>
+    </a>
+  </div>
+</div>
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__bd">
+    <div class="weui-tab">
+      <div class="weui-navbar" style="background-color: white" id="navbar-tab">
+        <div class="weui-navbar__item">
+        {% trans "Lecture Info" %}
+        </div>
+        <div class="weui-navbar__item">
+        {% trans "Comments" %}
+        </div>
+      </div>
+      <div class="weui-tab__panel" >
+        <div class="weui-tab__content" style="display: block" id="panel-content0">
+          <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.add_question' lecture.id %}">
+            <div class="weui-cell__bd"></div>
+            <div class="weui-cell__ft">{% trans "Add Question" %}</div>
+          </a>
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <article class="weui-article">
+                {{ lecture.info }}
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="weui-tab__content" id="panel-content1">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block tabbar %}
+<div class="weui-tabbar">
+  <a class="weui-btn weui-btn_primary" id="signup-btn">{% trans "Sign up" %}</a>
+</div>
+{% endblock tabbar %}
+
+{% block js %}
+{{ block.super }}
+<script>
+weui.tab("#navbar-tab",{
+  defaultIndex: 0,
+  onChange: function(index){
+    console.log(index)
+    $("#panel-content0").removeAttr("style");
+    $("#panel-content1").removeAttr("style");
+    $("#panel-content"+ index).css("display", "block");
+    if(index == 0) {
+      $("#panel-content1").empty();
+    } else if(index == 1) {
+      $("#panel-content0").hide();
+      let loading = weui.loading('{% trans "loading" %}');
+      setTimeout(function() {
+        loading.hide(function() {
+          let url = "{% url 'feedbacks.list_lecture_comments' 0 %}".replace("0", "{{ lecture.id }}");
+          $('#panel-content1').load(url);
+        });
+      });
+    }
+  }
+});
+</script>
+<script>
+$("#signup-btn").click(function(){
+  let add_behavior = "{% url 'feedbacks.add_behavior' 'listened' 0 %}".replace("0", "{{ lecture.id }}");
+  $.get(add_behavior);
+  let url = "{{ lecture.url }}";
+  window.location.replace(url);
+});
+</script>
+<script>
+$("#action-menu").bind("click", function() {
+  var that = this
+  weui.actionSheet([
+    {
+      label: "{% trans "Add to Favorites" %}",
+      onClick: function() {
+        let url = "{% url 'feedbacks.add_behavior' 'favour' 0 %}".replace("0", "{{ lecture.id }}");
+        $.get(
+          url,
+          function(data){
+            if (data["status"] === "200"){
+              weui.toast("{% trans "Add to Favorites Success!" %}", 500);
+            } else {
+            }
+          },
+          "json"
+        );
+      }
+    },
+    {
+      label: "{% trans "Hide This" %}",
+      onClick: function() {
+        let url = "{% url 'feedbacks.add_behavior' 'hide' 0 %}".replace("0", "{{ lecture.id }}");
+        $.get(
+          url,
+          function(data){
+            if (data["status"] === "200"){
+              weui.toast("{% trans "Hide Success!" %}", 500);
+            } else {
+            }
+          },
+          "json"
+        );
+      }
+    }
+  ], [
+    {
+      label: "{% trans "Cancel" %}",
+      onClick: function() {
+      }
+    }
+  ]);
+});
+</script>
+{% endblock js %}

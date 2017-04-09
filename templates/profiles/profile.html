@@ -1,0 +1,73 @@
+{% extends "./index.html" %}
+{% load i18n staticfiles %}
+{% block content %}
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__bd">
+    <div class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <img class="weui-media-box__thumb" src="{{ MEDIA_URL }}{{ user.card }}" alt="">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">{{ user.last_name }} {{ user.first_name }}</h4>
+        <p class="weui-media-box__desc">{% trans "Company: " %}{{ user.company }}</p>
+        <p class="weui-media-box__desc">{% trans "Position: " %}{{ user.position }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="weui-cells">
+  <a class="weui-cell weui-cell_access" href="javascript:;">
+    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/living_note.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
+    <div class="weui-cell__bd">
+      <p>{% trans "Living Note" %}</p>
+    </div>
+    <div class="weui-cell__ft"></div>
+  </a>
+  <a class="weui-cell weui-cell_access" href="javascript:;">
+    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/apply_living.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
+    <div class="weui-cell__bd">
+      <p>{% trans "Apply Living" %}</p>
+    </div>
+    <div class="weui-cell__ft"></div>
+  </a>
+</div>
+<div class="weui-cells">
+  <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.list_behavior' behavior='favour' %}">
+    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/favorites.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
+    <div class="weui-cell__bd">
+      <p>{% trans "Favorites" %}</p>
+    </div>
+    <div class="weui-cell__ft"></div>
+  </a>
+  <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.list_behavior' behavior='hide' %}">
+    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/uninterested.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
+    <div class="weui-cell__bd">
+      <p>{% trans "Uninterested" %}</p>
+    </div>
+    <div class="weui-cell__ft"></div>
+  </a>
+</div>
+<div class="weui-cells">
+  <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.list_behavior' behavior='listened' %}">
+    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/records_history.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
+    <div class="weui-cell__bd">
+      <p>{% trans "Records History" %}</p>
+    </div>
+    <div class="weui-cell__ft"></div>
+  </a>
+  <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.list_user_comments' %}">
+    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/comments_history.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
+    <div class="weui-cell__bd">
+      <p>{% trans "Comments History" %}</p>
+    </div>
+    <div class="weui-cell__ft"></div>
+  </a>
+  <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.list_user_questions' %}">
+    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/questions_history.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
+    <div class="weui-cell__bd">
+      <p>{% trans "Questions History" %}</p>
+    </div>
+    <div class="weui-cell__ft"></div>
+  </a>
+</div>
+{% endblock content %}
