@@ -23,6 +23,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     url(r'^$', RedirectView.as_view(pattern_name='lectures.list_categories', permanent=True), name='root'),
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('accounts.urls')),
     url(r'^feedbacks/', include('feedbacks.urls')),
     url(r'^lectures/', include('lectures.urls')),
     url(r'^profiles/', include('profiles.urls')),

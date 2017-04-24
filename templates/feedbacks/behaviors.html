@@ -5,7 +5,7 @@
 <div class="weui-panel weui-panel_access">
   <div class="weui-panel__bd">
   {% for behavior in behavior_list %}
-  <div class="weui-cell weui-cell_access" id="{{ behavior.id }}" title="{{ behavior.lecture.meeting.number }}">
+  <div class="weui-cell weui-cell_access" id="{{ behavior.id }}" title="{{ behavior.lecture.id }}">
       <div class="weui-cell__hd"><img src="{{ MEDIA_URL }}{{ behavior.lecture.speaker.picture }}" alt="" style="width:20px;margin-right:5px;display:block"></div>
       <div class="weui-cell__bd weui-cell_primary">
         <p>

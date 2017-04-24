@@ -26,7 +26,7 @@ def list_records(request):
     return render(request, 'records/records.html', context)
 
 
-#@login_required
+@login_required
 def list_behavior(request, behavior):
     behavior_dict = {b[0]:b[1] for b in BEHAVIOR_CHOICES}
     if behavior not in behavior_dict:

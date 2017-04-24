@@ -43,30 +43,35 @@
 <div class="weui-panel weui-panel_access">
   <div class="weui-panel__bd">
     <div class="weui-tab">
-      <div class="weui-navbar" style="background-color: white" id="navbar-tab">
+      <div class="weui-navbar" id="navbar-tab" style="background-color: white" >
         <div class="weui-navbar__item">
         {% trans "Lecture Info" %}
         </div>
+        {% if lecture.is_finished %}
         <div class="weui-navbar__item">
         {% trans "Comments" %}
         </div>
+        {% endif %}
       </div>
       <div class="weui-tab__panel" >
         <div class="weui-tab__content" style="display: block" id="panel-content0">
+          {% if not lecture.is_finished %}
           <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.add_question' lecture.id %}">
             <div class="weui-cell__bd"></div>
             <div class="weui-cell__ft">{% trans "Add Question" %}</div>
           </a>
-          <div class="weui-cell">
-            <div class="weui-cell__bd">
-              <article class="weui-article">
-                {{ lecture.info }}
-              </article>
-            </div>
+          <div class="weui-cell" style="padding: 0px, 0px;"></div>
+          {% endif %}
+          <div class="weui-cell__bd">
+            <article class="weui-article">
+              {{ lecture.info }}
+            </article>
           </div>
         </div>
+        {% if lecture.is_finished %}
         <div class="weui-tab__content" id="panel-content1">
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -81,6 +86,7 @@
 
 {% block js %}
 {{ block.super }}
+{% if lecture.is_finished %}
 <script>
 weui.tab("#navbar-tab",{
   defaultIndex: 0,
@@ -104,6 +110,7 @@ weui.tab("#navbar-tab",{
   }
 });
 </script>
+{% endif %}
 <script>
 $("#signup-btn").click(function(){
   let add_behavior = "{% url 'feedbacks.add_behavior' 'listened' 0 %}".replace("0", "{{ lecture.id }}");

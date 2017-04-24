@@ -282,7 +282,7 @@ msgstr "评论"
 
 #: templates/lectures/lecture.html:78
 msgid "Sign up"
-msgstr "进入直播"
+msgstr "进入课程"
 
 #: templates/lectures/lecture.html:120
 msgid "Add to Favorites"

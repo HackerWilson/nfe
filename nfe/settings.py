@@ -136,6 +136,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'accounts.User'
+LOGIN_URL = 'accounts.simple_login'
 
 if DEBUG:
     from .conf.dev import *
