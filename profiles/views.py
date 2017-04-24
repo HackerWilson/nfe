@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import User
 
 
-#@login_required
+@login_required
 def show_profile(request):
     user = request.user
     context = {"user": user}

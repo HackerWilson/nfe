@@ -18,7 +18,7 @@ from accounts.models import User
 from lectures.models import Lecture
 
 
-#@login_required
+@login_required
 def list_records(request):
     #record_list = Behavior.objects.filter(user__id=request.user.id, behavior='listened', is_visible=True).order_by('-time')
     record_list = Behavior.objects.filter(user__id=1, behavior='listened', is_visible=True).order_by('-time')
@@ -42,7 +42,7 @@ def list_behavior(request, behavior):
     return render(request, 'feedbacks/behaviors.html', context)
 
 
-#@login_required
+@login_required
 def add_behavior(request, behavior, lecture_id):
     behavior_dict = {b[0]:b[1] for b in BEHAVIOR_CHOICES}
     if behavior not in behavior_dict:
@@ -58,7 +58,7 @@ def add_behavior(request, behavior, lecture_id):
     return JsonResponse({'status': '200'})
 
 
-#@login_required
+@login_required
 def delete_behavior(request, behavior_id=None, behavior=None):
     if behavior:
         behavior_dict = {b[0]:b[1] for b in BEHAVIOR_CHOICES}
@@ -82,7 +82,7 @@ def list_lecture_comments(request, lecture_id=None):
     return render(request, 'feedbacks/comments.html', context)
 
 
-#@login_required
+@login_required
 def list_user_comments(request):
     #comment_list = Comment.objects.filter(user__id=request.user.id, is_visible=True).order_by('-time')
     comment_list = Comment.objects.filter(user__id=1, is_visible=True).order_by('-time')
@@ -90,7 +90,7 @@ def list_user_comments(request):
     return render(request, 'feedbacks/user_comments.html', context)
 
 
-#@login_required
+@login_required
 def add_comment(request, lecture_id):
     if request.method == 'POST':
         score = request.POST['score']
@@ -107,7 +107,7 @@ def add_comment(request, lecture_id):
         return render(request, 'feedbacks/comment.html', context)
 
 
-#@login_required
+@login_required
 def list_questions(request, lecture_id=None):
     if lecture_id:
         question_qs = Question.objects.filter(lecture__id=lecture_id)
@@ -119,7 +119,7 @@ def list_questions(request, lecture_id=None):
     return render(request, 'feedbacks/user_questions.html', context)
 
 
-#@login_required
+@login_required
 def add_question(request, lecture_id):
     if request.method == 'POST':
         detail = request.POST['detail']
