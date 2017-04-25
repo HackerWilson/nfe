@@ -89,7 +89,7 @@
 {% block tabbar %}
 {% if user.is_anonymous %}
 <div class="weui-tabbar">
-  <a href="{% url 'accounts.simple_login' %}" class="weui-btn weui-btn_primary" id="login-btn">{% trans "Login and Sign up" %}</a>
+  <a href="{% url 'accounts.login' %}" class="weui-btn weui-btn_primary" id="login-btn">{% trans "Please Login" %}</a>
 </div>
 {% elif user.is_authenticated %}
 <div class="weui-tabbar">

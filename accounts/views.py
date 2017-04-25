@@ -18,7 +18,7 @@ scope = 'snsapi_userinfo'
 oauth = WeChatOAuth(app_id, secret, redirect_uri, scope=scope)
 
 
-def simple_login(request):
+def login(request):
     query_string = request.META.get('QUERY_STRING', '')
     if not query_string:
         http_referer = request.META['HTTP_REFERER']
@@ -26,8 +26,7 @@ def simple_login(request):
     else:
         state = query_string.split('=')[1]
     oauth.state = state
-    context={"authorize_url": oauth.authorize_url}
-    return render(request, 'accounts/simple_login.html', context)
+    return HttpResponseRedirect(oauth.authorize_url)
 
 
 def auth(request):
