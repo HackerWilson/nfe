@@ -40,9 +40,11 @@
           Time: {{ month }} Month {{ day }} Day {{ time }}
           {% endblocktrans %}
           </li>
+          {% if lecture.is_finished %}
           <li class="weui-media-box__info__meta">
-          {% blocktrans %}Comments: {{ comment_num }} Score: {{ comment_avg_score }}{% endblocktrans %}
+          {% blocktrans %}Comments: {{ comment_num }}  Score: {{ comment_avg_score }}{% endblocktrans %}
           </li>
+          {% endif %}
         </ul>
       </div>
     </a>
@@ -91,9 +93,13 @@
 <div class="weui-tabbar">
   <a href="{% url 'accounts.login' %}" class="weui-btn weui-btn_primary" id="login-btn">{% trans "Please Login" %}</a>
 </div>
-{% elif user.is_authenticated %}
+{% elif user.is_authenticated and not lecture.is_finished %}
 <div class="weui-tabbar">
   <a class="weui-btn weui-btn_primary" id="signup-btn">{% trans "Sign up" %}</a>
+</div>
+{% elif user.is_authenticated and lecture.is_finished %}
+<div class="weui-tabbar">
+  <a class="weui-btn weui-btn_primary" id="signup-btn">{% trans "Review Lecture" %}</a>
 </div>
 {% endif %}
 {% endblock tabbar %}

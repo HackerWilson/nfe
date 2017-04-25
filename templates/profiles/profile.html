@@ -3,14 +3,14 @@
 {% block content %}
 <div class="weui-panel weui-panel_access">
   <div class="weui-panel__bd">
-    {% if not user.full_name %}
+    {% if not user.last_name %}
     <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
       <div class="weui-media-box__hd">
         <img class="weui-media-box__thumb" src="{{ user.headimgurl }}" alt="">
       </div>
       <div class="weui-media-box__bd">
         <h4 class="weui-media-box__title">{{ user.nickname }}</h4>
-        <p class="weui-media-box__desc">{% trans "click here to be certified." %}</p>
+        <p class="weui-media-box__desc">{% trans "Click here to be certified." %}</p>
       </div>
     </a>
     {% else %}

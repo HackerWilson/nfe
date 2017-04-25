@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-25 22:13+0800\n"
+"POT-Creation-Date: 2017-04-25 23:52+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,11 +36,11 @@ msgstr "附加信息"
 
 #: accounts/models.py:12
 msgid "Nickname"
-msgstr ""
+msgstr "昵称"
 
 #: accounts/models.py:13
 msgid "Head Image URL"
-msgstr ""
+msgstr "头像链接"
 
 #: accounts/models.py:14
 msgid "Business Card"
@@ -156,7 +156,7 @@ msgid "Is Finished"
 msgstr "是否已结束"
 
 #: lectures/models.py:64 lectures/models.py:65
-#: templates/lectures/lecture.html:57
+#: templates/lectures/lecture.html:59
 msgid "Lecture Info"
 msgstr "课程介绍"
 
@@ -189,7 +189,7 @@ msgstr "删除记录"
 msgid "Delete All"
 msgstr "删除所有记录"
 
-#: templates/feedbacks/behaviors.html:69 templates/lectures/lecture.html:174
+#: templates/feedbacks/behaviors.html:69 templates/lectures/lecture.html:180
 msgid "Cancel"
 msgstr "取消"
 
@@ -218,6 +218,16 @@ msgstr "提交成功！"
 msgid "Point"
 msgstr "分"
 
+#: templates/feedbacks/comments.html:18
+#, python-format
+msgid ""
+"\n"
+"            %(month)s Month %(day)s Day %(time)s\n"
+"          "
+msgstr ""
+"\n"
+"%(month)s月%(day)s日 %(time)s"
+
 #: templates/feedbacks/common.html:9 templates/lectures/lecture.html:35
 #: templates/lectures/lectures.html:8 templates/records/records.html:14
 #, python-format
@@ -236,7 +246,7 @@ msgstr ""
 "时间：%(month)s月%(day)s日 %(time)s\n"
 "          "
 
-#: templates/feedbacks/question.html:3 templates/lectures/lecture.html:69
+#: templates/feedbacks/question.html:3 templates/lectures/lecture.html:71
 msgid "Add Question"
 msgstr "课程咨询"
 
@@ -263,7 +273,7 @@ msgid "My Questions"
 msgstr "我的问题"
 
 #: templates/lectures/categories.html:23 templates/lectures/categories.html:34
-#: templates/lectures/lecture.html:116
+#: templates/lectures/lecture.html:122
 msgid "loading"
 msgstr "加载中"
 
@@ -275,31 +285,40 @@ msgstr "所有课程"
 msgid "Lecture Detail"
 msgstr "课程信息"
 
-#: templates/lectures/lecture.html:60
+#: templates/lectures/lecture.html:45
+#, python-format
+msgid "Comments: %(comment_num)s  Score: %(comment_avg_score)s"
+msgstr "评论数：%(comment_num)s  评分数：%(comment_avg_score)s"
+
+#: templates/lectures/lecture.html:62
 msgid "Comments"
 msgstr "评论"
 
-#: templates/lectures/lecture.html:92
+#: templates/lectures/lecture.html:94
 msgid "Please Login"
-msgstr ""
+msgstr "请先登录"
 
-#: templates/lectures/lecture.html:96
+#: templates/lectures/lecture.html:98
 msgid "Sign up"
-msgstr "进入课程"
+msgstr "进入课程直播"
 
-#: templates/lectures/lecture.html:141
+#: templates/lectures/lecture.html:102
+msgid "Review Lecture"
+msgstr "课程回顾"
+
+#: templates/lectures/lecture.html:147
 msgid "Add to Favorites"
 msgstr "添加到收藏"
 
-#: templates/lectures/lecture.html:148
+#: templates/lectures/lecture.html:154
 msgid "Add to Favorites Success!"
 msgstr "添加成功！"
 
-#: templates/lectures/lecture.html:157
+#: templates/lectures/lecture.html:163
 msgid "Hide This"
 msgstr "屏蔽该课程"
 
-#: templates/lectures/lecture.html:164
+#: templates/lectures/lecture.html:170
 msgid "Hide Success!"
 msgstr "屏蔽成功！"
 
@@ -311,15 +330,15 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"时间：%(month)s月%(day)s日 %(time)s      "
+"时间：%(month)s月%(day)s日 %(time)s"
 
 #: templates/profiles/index.html:3 templates/tabbar.html:13
 msgid "Profile"
 msgstr "个人中心"
 
 #: templates/profiles/profile.html:13
-msgid "click here to be certified."
-msgstr ""
+msgid "Click here to be certified."
+msgstr "尚未实名制，实名审核通过开通课程评价功能，还能申请课程直播哦～"
 
 #: templates/profiles/profile.html:23
 msgid "Company: "
@@ -381,6 +400,3 @@ msgid ""
 msgstr ""
 "\n"
 "第%(number)s期：%(speaker_name)s，"
-
-#~ msgid "Phone Number"
-#~ msgstr "手机"

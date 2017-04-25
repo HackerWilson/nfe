@@ -18,6 +18,7 @@ def list_lectures(request, category_id):
     lecture_list = Lecture.objects.filter(category__order=category_id, meeting__is_offline=False)\
                        .order_by('-time')\
                        .values('id', 'topic', 'time', 'meeting__number', 'speaker__name', 'speaker__intro', 'speaker__picture')
+    print len(lecture_list), lecture_list
     context = {'lecture_list': lecture_list}
     return render(request, 'lectures/lectures.html', context)
 
@@ -26,11 +27,14 @@ def lecture_detail(request, lecture_id):
     user = request.user
     lecture = Lecture.objects.get(id=lecture_id)
 
-    comment_qs = Comment.objects.filter(lecture__id=lecture_id)
-    comment_num = comment_qs.count()
-    comment_agg =  comment_qs.aggregate(comment_avg_score=Avg('score'))
+    if lecture.is_finished:
+        comment_qs = Comment.objects.filter(lecture__id=lecture_id)
+        comment_num = comment_qs.count()
+        comment_agg =  comment_qs.aggregate(comment_avg_score=Avg('score'))
+        context = {'user': user, 'lecture': lecture,
+                   'comment_num': comment_num,
+                   'comment_avg_score': comment_agg['comment_avg_score']}
+    else:
+        context = {'user': user, 'lecture': lecture}
 
-    context = {'user': user, 'lecture': lecture,
-               'comment_num': comment_num,
-               'comment_avg_score': comment_agg['comment_avg_score']}
     return render(request, 'lectures/lecture.html', context)

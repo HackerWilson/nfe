@@ -70,7 +70,6 @@ def delete_behavior(request, behavior_id=None, behavior=None):
         behavior.save()
     return JsonResponse({'status': '200'})
 
-
 def list_lecture_comments(request, lecture_id=None):
     comment_list = Comment.objects.filter(lecture__id=lecture_id, is_visible=True).order_by('-time')
     context = {'lecture_id': lecture_id, 'comment_list': comment_list}
