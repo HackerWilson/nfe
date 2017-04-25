@@ -73,6 +73,9 @@ def delete_behavior(request, behavior_id=None, behavior=None):
 def list_lecture_comments(request, lecture_id=None):
     comment_list = Comment.objects.filter(lecture__id=lecture_id, is_visible=True).order_by('-time')
     context = {'lecture_id': lecture_id, 'comment_list': comment_list}
+
+    if request.user.is_authenticated and request.user.has_pem('feedbacks.add_comment'):
+        context['can_add_comment'] = True
     return render(request, 'feedbacks/comments.html', context)
 
 

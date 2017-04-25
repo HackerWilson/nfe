@@ -40,7 +40,7 @@
           Time: {{ month }} Month {{ day }} Day {{ time }}
           {% endblocktrans %}
           </li>
-          {% if lecture.is_finished %}
+          {% if lecture.is_finished and comment_num %}
           <li class="weui-media-box__info__meta">
           {% blocktrans %}Comments: {{ comment_num }}  Score: {{ comment_avg_score }}{% endblocktrans %}
           </li>
