@@ -1,0 +1,11 @@
+uwsgi:
+    http: 127.0.0.1:8080
+    chdir: ./
+    module: nfe.wsgi
+    master: true
+    listen: 128
+    single-interpreter: true
+    processes: 1
+    buffer-size: 65535
+    pidfile: /tmp/uwsgi.pid
+    daemonize: /tmp/uwsgi.log

@@ -4,14 +4,23 @@
 <div class="weui-panel weui-panel_access">
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_appmsg">
+      {% if not user.first_name and user.last_name %}
       <div class="weui-media-box__hd">
-        <img class="weui-media-box__thumb" src="{{ MEDIA_URL }}{{ user.card }}" alt="">
+        <img class="weui-media-box__thumb" src="{{ user.headimgurl }}" alt="">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">{{ user.nickname }}</h4>
+      </div>
+      {% else %}
+      <div class="weui-media-box__hd">
+        <img class="weui-media-box__thumb" src="{{ user.headimgurl }}" alt="">
       </div>
       <div class="weui-media-box__bd">
         <h4 class="weui-media-box__title">{{ user.last_name }} {{ user.first_name }}</h4>
         <p class="weui-media-box__desc">{% trans "Company: " %}{{ user.company }}</p>
         <p class="weui-media-box__desc">{% trans "Position: " %}{{ user.position }}</p>
       </div>
+      {% endif %}
     </div>
   </div>
 </div>

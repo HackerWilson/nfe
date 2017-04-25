@@ -16,5 +16,5 @@ class UserAdmin(UserAdmin):
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-        (_('Extra info'), {'fields': ('phone', 'company', 'position')}),
+        (_('Extra info'), {'fields': ('company', 'position')}),
     )

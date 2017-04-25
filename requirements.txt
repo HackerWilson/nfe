@@ -2,3 +2,4 @@ Django==1.11
 Pillow==4.1.0
 wechatpy==1.4.1
 cryptography==1.8.1
+uWSGI==2.0.15

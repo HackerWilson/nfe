@@ -9,9 +9,10 @@ from utils.utils import upload_cardimage
 
 
 class User(AbstractUser):
+    nickname = models.CharField(_('Nickname'), max_length=30, blank=True)
+    headimgurl = models.CharField(_('Head Image URL'), max_length=300, blank=True)
     card = models.ImageField(_('Business Card'),
                              upload_to=upload_cardimage,
                              blank=True)
-    phone = models.CharField(_('Phone Number'), max_length=11, blank=True)
     company = models.CharField(_('Company Name'), max_length=30, blank=True)
     position = models.CharField(_('Company Position'), max_length=30, blank=True)
