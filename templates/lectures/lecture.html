@@ -5,6 +5,14 @@
 {% block css %}
 {{ block.super }}
 <style>
+#login-btn {
+  border-radius: 0px;
+  width: 100%;
+}
+#login-btn:after {
+  border: 0px;
+  border-radius: 0px;
+}
 #signup-btn {
   border-radius: 0px;
   width: 100%;
@@ -43,16 +51,16 @@
 <div class="weui-panel weui-panel_access">
   <div class="weui-panel__bd">
     <div class="weui-tab">
+      {% if lecture.is_finished %}
       <div class="weui-navbar" id="navbar-tab" style="background-color: white" >
         <div class="weui-navbar__item">
         {% trans "Lecture Info" %}
         </div>
-        {% if lecture.is_finished %}
         <div class="weui-navbar__item">
         {% trans "Comments" %}
         </div>
-        {% endif %}
       </div>
+      {% endif %}
       <div class="weui-tab__panel" >
         <div class="weui-tab__content" style="display: block" id="panel-content0">
           {% if not lecture.is_finished %}
@@ -79,9 +87,15 @@
 {% endblock content %}
 
 {% block tabbar %}
+{% if user.is_anonymous %}
+<div class="weui-tabbar">
+  <a href="{% url 'accounts.simple_login' %}" class="weui-btn weui-btn_primary" id="login-btn">{% trans "Login and Sign up" %}</a>
+</div>
+{% elif user.is_authenticated %}
 <div class="weui-tabbar">
   <a class="weui-btn weui-btn_primary" id="signup-btn">{% trans "Sign up" %}</a>
 </div>
+{% endif %}
 {% endblock tabbar %}
 
 {% block js %}

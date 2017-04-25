@@ -21,6 +21,7 @@ def list_lectures(request, category_id):
 
 
 def lecture_detail(request, lecture_id):
+    user = request.user
     lecture = Lecture.objects.get(id=lecture_id)
-    context = {'lecture': lecture}
+    context = {'user': user, 'lecture': lecture}
     return render(request, 'lectures/lecture.html', context)

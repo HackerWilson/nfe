@@ -20,8 +20,7 @@ from lectures.models import Lecture
 
 @login_required
 def list_records(request):
-    #record_list = Behavior.objects.filter(user__id=request.user.id, behavior='listened', is_visible=True).order_by('-time')
-    record_list = Behavior.objects.filter(user__id=1, behavior='listened', is_visible=True).order_by('-time')
+    record_list = Behavior.objects.filter(user__id=request.user.id, behavior='listened', is_visible=True).order_by('-time')
     context = {'record_list': record_list}
     return render(request, 'records/records.html', context)
 
@@ -34,8 +33,7 @@ def list_behavior(request, behavior):
 
     behavior_name = behavior_dict["{}".format(behavior)]
 
-    #behavior_qs = Behavior.objects.filter(user__id=request.user.id, behavior=behavior, is_visible=True)
-    behavior_qs = Behavior.objects.filter(user__id=1, behavior=behavior, is_visible=True)
+    behavior_qs = Behavior.objects.filter(user__id=request.user.id, behavior=behavior, is_visible=True)
     behavior_list = behavior_qs.order_by('-time')
 
     context = {'behavior': behavior, 'behavior_name': behavior_name, 'behavior_list': behavior_list}
@@ -48,8 +46,7 @@ def add_behavior(request, behavior, lecture_id):
     if behavior not in behavior_dict:
         raise Http404("{b} behavior does not exist.".format(b=behavior))
 
-    #user = get_object_or_404(User, id=request.user.id)
-    user = get_object_or_404(User, id=1)
+    user = get_object_or_404(User, id=request.user.id)
     lecture = get_object_or_404(Lecture, id=lecture_id)
     time = timezone.now()
     Behavior.objects.update_or_create(user=user,
@@ -65,12 +62,10 @@ def delete_behavior(request, behavior_id=None, behavior=None):
         if behavior not in behavior_dict:
             raise Http404("{b} behavior does not exist.".format(b=behavior))
 
-        #behavior = Behavior.objects.filter(user__id=request.user.id, behavior=behavior, is_visible=True)
-        behavior = Behavior.objects.filter(user__id=1, behavior=behavior, is_visible=True)
+        behavior = Behavior.objects.filter(user__id=request.user.id, behavior=behavior, is_visible=True)
         behavior.update(is_visible = False)
     if behavior_id:
-        #behavior = get_object_or_404(Behavior, pk=behavior_id, user__id=request.user.id)
-        behavior = get_object_or_404(Behavior, pk=behavior_id, user__id=1)
+        behavior = get_object_or_404(Behavior, pk=behavior_id, user__id=request.user.id)
         behavior.is_visible = False
         behavior.save()
     return JsonResponse({'status': '200'})
@@ -84,8 +79,7 @@ def list_lecture_comments(request, lecture_id=None):
 
 @login_required
 def list_user_comments(request):
-    #comment_list = Comment.objects.filter(user__id=request.user.id, is_visible=True).order_by('-time')
-    comment_list = Comment.objects.filter(user__id=1, is_visible=True).order_by('-time')
+    comment_list = Comment.objects.filter(user__id=request.user.id, is_visible=True).order_by('-time')
     context = {'comment_list': comment_list}
     return render(request, 'feedbacks/user_comments.html', context)
 
@@ -96,8 +90,7 @@ def add_comment(request, lecture_id):
         score = request.POST['score']
         detail = request.POST['detail']
         time = timezone.now()
-        #user = get_object_or_404(User, id=request.user.id)
-        user = get_object_or_404(User, id=1)
+        user = get_object_or_404(User, id=request.user.id)
         lecture = get_object_or_404(Lecture, id=lecture_id)
         Comment.objects.create(score=score, detail=detail, time=time, user=user, lecture=lecture)
         return HttpResponseRedirect(reverse('lectures.lecture_detail', args=[lecture_id]))
@@ -112,8 +105,7 @@ def list_questions(request, lecture_id=None):
     if lecture_id:
         question_qs = Question.objects.filter(lecture__id=lecture_id)
     else:
-        #question_qs = Question.objects.filter(user__id=request.user.id)
-        question_qs = Question.objects.filter(user__id=1)
+        question_qs = Question.objects.filter(user__id=request.user.id)
     question_list = question_qs.order_by('-time')
     context = {'lecture_id': lecture_id, 'question_list': question_list}
     return render(request, 'feedbacks/user_questions.html', context)
@@ -124,8 +116,7 @@ def add_question(request, lecture_id):
     if request.method == 'POST':
         detail = request.POST['detail']
         time = timezone.now()
-        #user = get_object_or_404(User, id=request.user.id)
-        user = get_object_or_404(User, id=1)
+        user = get_object_or_404(User, id=request.user.id)
         lecture = get_object_or_404(Lecture, id=lecture_id)
         Question.objects.create(detail=detail, time=time, user=user, lecture=lecture)
         return HttpResponseRedirect(reverse('lectures.lecture_detail', args=[lecture_id]))
