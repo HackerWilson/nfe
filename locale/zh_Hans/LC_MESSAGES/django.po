@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-23 22:47+0800\n"
+"POT-Creation-Date: 2017-04-25 22:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,18 +35,22 @@ msgid "Extra info"
 msgstr "附加信息"
 
 #: accounts/models.py:12
+msgid "Nickname"
+msgstr ""
+
+#: accounts/models.py:13
+msgid "Head Image URL"
+msgstr ""
+
+#: accounts/models.py:14
 msgid "Business Card"
 msgstr "名片"
 
-#: accounts/models.py:15
-msgid "Phone Number"
-msgstr "手机"
-
-#: accounts/models.py:16
+#: accounts/models.py:17
 msgid "Company Name"
 msgstr "公司"
 
-#: accounts/models.py:17
+#: accounts/models.py:18
 msgid "Company Position"
 msgstr "职务"
 
@@ -152,7 +156,7 @@ msgid "Is Finished"
 msgstr "是否已结束"
 
 #: lectures/models.py:64 lectures/models.py:65
-#: templates/lectures/lecture.html:48
+#: templates/lectures/lecture.html:57
 msgid "Lecture Info"
 msgstr "课程介绍"
 
@@ -185,7 +189,7 @@ msgstr "删除记录"
 msgid "Delete All"
 msgstr "删除所有记录"
 
-#: templates/feedbacks/behaviors.html:69 templates/lectures/lecture.html:153
+#: templates/feedbacks/behaviors.html:69 templates/lectures/lecture.html:174
 msgid "Cancel"
 msgstr "取消"
 
@@ -214,18 +218,13 @@ msgstr "提交成功！"
 msgid "Point"
 msgstr "分"
 
-#: templates/feedbacks/comments.html:27 templates/records/records.html:28
-#: templates/records/records.html:55
-msgid "Nothing Now"
-msgstr "暂时还没有内容"
-
-#: templates/feedbacks/common.html:9 templates/lectures/lecture.html:27
+#: templates/feedbacks/common.html:9 templates/lectures/lecture.html:35
 #: templates/lectures/lectures.html:8 templates/records/records.html:14
 #, python-format
 msgid "The %(number)s Meeting: "
 msgstr "第%(number)s期："
 
-#: templates/feedbacks/common.html:13 templates/lectures/lecture.html:31
+#: templates/feedbacks/common.html:13 templates/lectures/lecture.html:39
 #: templates/records/records.html:18
 #, python-format
 msgid ""
@@ -237,7 +236,7 @@ msgstr ""
 "时间：%(month)s月%(day)s日 %(time)s\n"
 "          "
 
-#: templates/feedbacks/question.html:3 templates/lectures/lecture.html:58
+#: templates/feedbacks/question.html:3 templates/lectures/lecture.html:69
 msgid "Add Question"
 msgstr "课程咨询"
 
@@ -264,7 +263,7 @@ msgid "My Questions"
 msgstr "我的问题"
 
 #: templates/lectures/categories.html:23 templates/lectures/categories.html:34
-#: templates/lectures/lecture.html:96
+#: templates/lectures/lecture.html:116
 msgid "loading"
 msgstr "加载中"
 
@@ -276,27 +275,31 @@ msgstr "所有课程"
 msgid "Lecture Detail"
 msgstr "课程信息"
 
-#: templates/lectures/lecture.html:51
+#: templates/lectures/lecture.html:60
 msgid "Comments"
 msgstr "评论"
 
-#: templates/lectures/lecture.html:78
+#: templates/lectures/lecture.html:92
+msgid "Please Login"
+msgstr ""
+
+#: templates/lectures/lecture.html:96
 msgid "Sign up"
 msgstr "进入课程"
 
-#: templates/lectures/lecture.html:120
+#: templates/lectures/lecture.html:141
 msgid "Add to Favorites"
 msgstr "添加到收藏"
 
-#: templates/lectures/lecture.html:127
+#: templates/lectures/lecture.html:148
 msgid "Add to Favorites Success!"
 msgstr "添加成功！"
 
-#: templates/lectures/lecture.html:136
+#: templates/lectures/lecture.html:157
 msgid "Hide This"
 msgstr "屏蔽该课程"
 
-#: templates/lectures/lecture.html:143
+#: templates/lectures/lecture.html:164
 msgid "Hide Success!"
 msgstr "屏蔽成功！"
 
@@ -314,39 +317,43 @@ msgstr ""
 msgid "Profile"
 msgstr "个人中心"
 
-#: templates/profiles/profile.html:12
+#: templates/profiles/profile.html:13
+msgid "click here to be certified."
+msgstr ""
+
+#: templates/profiles/profile.html:23
 msgid "Company: "
 msgstr "公司："
 
-#: templates/profiles/profile.html:13
+#: templates/profiles/profile.html:24
 msgid "Position: "
 msgstr "职务："
 
-#: templates/profiles/profile.html:22
+#: templates/profiles/profile.html:34
 msgid "Living Note"
 msgstr "直播须知"
 
-#: templates/profiles/profile.html:29
+#: templates/profiles/profile.html:41
 msgid "Apply Living"
 msgstr "申请直播"
 
-#: templates/profiles/profile.html:38
+#: templates/profiles/profile.html:50
 msgid "Favorites"
 msgstr "我收藏的"
 
-#: templates/profiles/profile.html:45
+#: templates/profiles/profile.html:57
 msgid "Uninterested"
 msgstr "我屏蔽的"
 
-#: templates/profiles/profile.html:54
+#: templates/profiles/profile.html:66
 msgid "Records History"
 msgstr "收听记录"
 
-#: templates/profiles/profile.html:61
+#: templates/profiles/profile.html:73
 msgid "Comments History"
 msgstr "评论记录"
 
-#: templates/profiles/profile.html:68
+#: templates/profiles/profile.html:80
 msgid "Questions History"
 msgstr "提问记录"
 
@@ -357,6 +364,10 @@ msgstr "收听记录"
 #: templates/records/records.html:5
 msgid "Living"
 msgstr "正在直播"
+
+#: templates/records/records.html:28 templates/records/records.html:55
+msgid "Nothing Now"
+msgstr "暂时还没有内容"
 
 #: templates/records/records.html:34
 msgid "Finished"
@@ -370,3 +381,6 @@ msgid ""
 msgstr ""
 "\n"
 "第%(number)s期：%(speaker_name)s，"
+
+#~ msgid "Phone Number"
+#~ msgstr "手机"
