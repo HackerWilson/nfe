@@ -3,7 +3,12 @@
 {% block content %}
 <div class="weui-panel weui-panel_access">
   <div class="weui-panel__bd">
-    {% if not user.last_name %}
+    {% if user.is_anonymous %}
+    <div class="weui-media-box weui-media-box_text" style="text-align: center;">
+      <h4 class="weui-media-box__title">{% trans "Welcome, Guest!" %}</h4>
+      <a href="{% url 'accounts.login' %}">{% trans "click here to login" %}</a>
+    </div>
+    {% elif user.is_authenticated and not certified_user %}
     <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
       <div class="weui-media-box__hd">
         <img class="weui-media-box__thumb" src="{{ user.headimgurl }}" alt="">
@@ -13,7 +18,7 @@
         <p class="weui-media-box__desc">{% trans "Click here to be certified." %}</p>
       </div>
     </a>
-    {% else %}
+    {% elif user.is_authenticated and certified_user %}
     <div class="weui-media-box weui-media-box_appmsg">
       <div class="weui-media-box__hd">
         <img class="weui-media-box__thumb" src="{{ user.headimgurl }}" alt="">

@@ -47,7 +47,7 @@ class Meeting(models.Model):
         verbose_name_plural = _('Meeting Info')
 
     def __unicode__(self):
-        return _('Meeting') + ' {num}'.format(num=self.number)
+        return _('{num} Meeting').format(num=self.number)
 
 
 class Lecture(models.Model):

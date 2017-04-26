@@ -6,6 +6,7 @@
 </a>
 {% endif %}
 <div class="weui-cell" style="padding: 0px 0px"></div>
+{% if comment_list %}
 <div class="weui-panel">
   {% for comment in comment_list %}
   <div class="weui-panel__bd">
@@ -28,9 +29,10 @@
       </div>
     </div>
   </div>
-  {% empty %}
-  <div class="weui-loadmore weui-loadmore_line">
-    <span class="weui-loadmore__tips">{% trans "Nothing Now" %}</span>
-  </div>
   {% endfor %}
 </div>
+{% else %}
+<div class="weui-loadmore weui-loadmore_line">
+  <span class="weui-loadmore__tips">{% trans "No Comments" %}</span>
+</div>
+{% endif %}

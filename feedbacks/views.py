@@ -74,7 +74,7 @@ def list_lecture_comments(request, lecture_id=None):
     comment_list = Comment.objects.filter(lecture__id=lecture_id, is_visible=True).order_by('-time')
     context = {'lecture_id': lecture_id, 'comment_list': comment_list}
 
-    if request.user.is_authenticated and request.user.has_pem('feedbacks.add_comment'):
+    if request.user.is_authenticated and request.user.has_perm('feedbacks.add_comment'):
         context['can_add_comment'] = True
     return render(request, 'feedbacks/comments.html', context)
 
@@ -88,6 +88,8 @@ def list_user_comments(request):
 
 @login_required
 def add_comment(request, lecture_id):
+    if not request.user.has_perm('feedbacks.add_comment'):
+        return HttpResponseRedirect('root')
     if request.method == 'POST':
         score = request.POST['score']
         detail = request.POST['detail']
