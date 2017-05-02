@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-02 23:38+0800\n"
+"POT-Creation-Date: 2017-05-03 00:15+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -357,14 +357,12 @@ msgstr ""
 "时间：%(month)s月%(day)s日 %(time)s"
 
 #: templates/live/live.html:3
-#, fuzzy
-#| msgid "Apply Living"
 msgid "Apply Live"
 msgstr "申请直播"
 
 #: templates/live/live.html:22
 msgid "Please fill in the form below with live info:"
-msgstr ""
+msgstr "填写直播信息"
 
 #: templates/live/live.html:25 templates/live/live.html:27
 msgid "Live Topic"
@@ -372,7 +370,7 @@ msgstr "直播主题"
 
 #: templates/live/live.html:31
 msgid "Appointment Time"
-msgstr ""
+msgstr "预约时间"
 
 #: templates/live/live.html:33
 msgid "Click here"

@@ -2,6 +2,20 @@
 {% load i18n %}
 {% block title %}{% trans "Add Comment" %}{% endblock title %}
 
+{% block css %}
+{{ block.super }}
+<style>
+#submit-btn {
+  border-radius: 0px;
+  width: 100%;
+}
+#submit-btn:after {
+  border: 0px;
+  border-radius: 0px;
+}
+</style>
+{% endblock css %}
+
 {% block content %}
 {% include "./common.html" %}
 <div class="weui-panel">
@@ -24,9 +38,9 @@
           <textarea class="weui-textarea" placeholder="{% trans "Please enter your comment: " %}" rows="12" name="detail" id="id_detail" maxlength="200" required></textarea>
         <div>
       <div>
-    <div class="weui-btn-area">
-        <input type="submit" class="weui-btn weui-btn_primary">
-      <div>
+      <div class="weui-tabbar">
+        <input type="submit" class="weui-btn weui-btn_primary" id="submit-btn">
+      </div>
     </form>
   </div>
 </div>

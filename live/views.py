@@ -36,19 +36,19 @@ def add_live(request, lecture_id=None):
         lecture_form = LectureForm(request.POST, request.FILES)
         t = request.POST['time']
         date = datetime.date.fromtimestamp(time.mktime(time.strptime(t, "%Y-%m-%d")))
-        time = timezone.now().replace(year=date.year, month=date.month, day=date.day)
+        lecture_time = timezone.now().replace(year=date.year, month=date.month, day=date.day)
         topic = request.POST['topic']
         info = request.POST['info']
         speaker_name = request.POST['speaker_name']
         speaker_intro = request.POST['speaker_intro']
         speaker_picture = request.FILES['speaker_picture']
 
-        speaker = Speaker.objects.update_or_create(name=speaker_name,
+        speaker, _ = Speaker.objects.update_or_create(name=speaker_name,
                                                    defaults={'intro': speaker_intro, 'picture': speaker_picture})
         category = Category.objects.order_by('order').last()
         meeting = Meeting.objects.order_by('id').first()
-        lecture = Lecture.objects.update_or_create(topic=topic, speaker=speaker, meeting=meeting,
-                                                   defaults={'time': time, 'info': info,
+        lecture, _ = Lecture.objects.update_or_create(topic=topic, speaker=speaker, meeting=meeting,
+                                                   defaults={'time': lecture_time, 'info': info,
                                                              'category': category, 'is_passed': False})
 
 
