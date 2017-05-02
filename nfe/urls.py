@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^feedbacks/', include('feedbacks.urls')),
     url(r'^lectures/', include('lectures.urls')),
+    url(r'^live/', include('live.urls')),
     url(r'^profiles/', include('profiles.urls')),
 ]
 

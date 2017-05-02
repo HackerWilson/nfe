@@ -1,0 +1,96 @@
+{% extends "./index.html" %}
+{% load i18n %}
+{% block title %}{% trans "Apply Live" %}{% endblock title %}
+
+{% block css %}
+{{ block.super }}
+<style>
+#submit-btn {
+  border-radius: 0px;
+  width: 100%;
+}
+#submit-btn:after {
+  border: 0px;
+  border-radius: 0px;
+}
+</style>
+{% endblock css %}
+
+{% block content %}
+<form enctype="multipart/form-data" method="post" action="{% url 'live.add_live' %}">
+  {% csrf_token %}
+  <div class="weui-cells__title">{% trans "Please fill in the form below with live info:" %}</div>
+  <div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label class="weui-label" for="id_topic">{% trans "Live Topic" %}</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="text" name="topic" required id="id_topic" maxlength="50" placeholder="{% trans "Live Topic" %}">
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label class="weui-label" for="id_time">{% trans "Appointment Time" %}</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="text" name="time" required id="id_time" placeholder="{% trans "Click here" %}" readonly>
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <textarea class="weui-textarea" type="text" rows="8" name="info" required id="id_info" maxlength="500" placeholder="{% trans "Please enter the live introduction, less than 500 characters." %}"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="weui-cells__title">{% trans "Please fill in the form below with speaker info:" %}</div>
+  <div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+      <div class="weui-cell__hd"><label class="weui-label" for="id_speaker_name">{% trans "Speaker Name" %}</label></div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="text" name="speaker_name" required id="id_speaker_name" maxlength="12" placeholder="{% trans "Speaker Name" %}">
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <textarea class="weui-textarea" type="text" rows="5" name="speaker_intro" required id="id_speaker_intro" maxlength="200" placeholder="{% trans "Please enter the speaker introduction, less than 200 characters." %}"></textarea>
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <div class="weui-uploader">
+          <div class="weui-uploader__hd">
+            <p class="weui-uploader__title">{% trans "Speaker Picture" %}</p>
+          </div>
+              <input  type="file" name="speaker_picture" id="id_speaker_picture">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="weui-tabbar">
+    <input type="submit" class="weui-btn weui-btn_primary" id="submit-btn">
+  </div>
+</form>
+{% endblock content %}
+
+{% block tabbar %}
+{% endblock tabbar %}
+
+{% block js %}
+{{ block.super }}
+<script>
+$("#id_time").click(function(){
+  var t = new Date();
+  weui.datePicker({
+    start: t,
+    end: t.getFullYear() + 1,
+    defaultValue: [t.getFullYear(), t.getMonth() + 1, t.getDay()],
+    onChange: function(result){
+      let value = result[0].value + "-" + result[1].value + "-" + result[2].value
+      $("#id_time").attr("value", value);
+      console.log(result);
+    },
+    onConfirm: function(result){
+      let value = result[0].value + "-" + result[1].value + "-" + result[2].value
+      $("#id_time").attr("value", value);
+    },
+  });
+})
+</script>
+{% endblock js %}

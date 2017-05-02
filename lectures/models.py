@@ -13,6 +13,7 @@ class Category(models.Model):
 
     class Meta:
         ordering = ('order', )
+        unique_together = ("name", "order")
         verbose_name = _('Lecture Category')
         verbose_name_plural = _('Lecture Category')
 
@@ -21,7 +22,7 @@ class Category(models.Model):
 
 
 class Speaker(models.Model):
-    name = models.CharField(_('Speaker'), max_length=12)
+    name = models.CharField(_('Speaker Name'), max_length=12, unique=True)
     intro = models.CharField(_('Speaker Info'), max_length=200, blank=True)
     picture = models.ImageField(_('Speaker Picture'),
                                 upload_to=upload_speakerimage,
@@ -36,7 +37,7 @@ class Speaker(models.Model):
 
 
 class Meeting(models.Model):
-    number = models.PositiveIntegerField(_('Number'))
+    number = models.PositiveIntegerField(_('Number'), unique=True)
     time = models.DateTimeField(_('Time'))
     info = models.CharField(_('Info'), max_length=1000, blank=True)
     is_offline = models.BooleanField(_('Is Offline'), default=False)
@@ -58,9 +59,11 @@ class Lecture(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE)
     meeting = models.ForeignKey('Meeting', on_delete=models.CASCADE)
+    is_passed = models.BooleanField(_('Is Passed'), default=True)
     is_finished = models.BooleanField(_('Is Finished'), default=False)
 
     class Meta:
+        unique_together = ("topic", "speaker", "meeting")
         verbose_name = _('Lecture Info')
         verbose_name_plural = _('Lecture Info')
 

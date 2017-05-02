@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-26 21:17+0800\n"
+"POT-Creation-Date: 2017-05-02 23:38+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,11 +63,12 @@ msgid "Detail"
 msgstr "内容"
 
 #: feedbacks/models.py:14 feedbacks/models.py:29 feedbacks/models.py:52
-#: lectures/models.py:40 lectures/models.py:54
+#: lectures/models.py:41 lectures/models.py:55
 msgid "Time"
 msgstr "时间"
 
 #: feedbacks/models.py:17 feedbacks/models.py:32 feedbacks/models.py:58
+#: live/models.py:13 live/models.py:26
 msgid "Is Visible"
 msgstr "是否可见"
 
@@ -103,62 +104,76 @@ msgstr "名称"
 msgid "Order"
 msgstr "排序"
 
-#: lectures/models.py:16 lectures/models.py:17
+#: lectures/models.py:17 lectures/models.py:18
 msgid "Lecture Category"
 msgstr "课程分类"
 
-#: lectures/models.py:24
-msgid "Speaker"
-msgstr "讲师"
+#: lectures/models.py:25 live/forms.py:11 templates/live/live.html:45
+#: templates/live/live.html:47
+msgid "Speaker Name"
+msgstr "讲师姓名"
 
-#: lectures/models.py:25
+#: lectures/models.py:26 live/forms.py:12
 msgid "Speaker Info"
 msgstr "讲师介绍"
 
-#: lectures/models.py:26
+#: lectures/models.py:27 live/forms.py:13 templates/live/live.html:59
 msgid "Speaker Picture"
 msgstr "讲师照片"
 
-#: lectures/models.py:31 lectures/models.py:32
+#: lectures/models.py:32 lectures/models.py:33
 msgid "Lecture Speaker"
 msgstr "讲师信息"
 
-#: lectures/models.py:39
+#: lectures/models.py:40
 msgid "Number"
 msgstr "编号"
 
-#: lectures/models.py:41 lectures/models.py:56
+#: lectures/models.py:42 lectures/models.py:57
 msgid "Info"
 msgstr "介绍"
 
-#: lectures/models.py:42
+#: lectures/models.py:43
 msgid "Is Offline"
 msgstr "是否线下"
 
-#: lectures/models.py:46 lectures/models.py:47
+#: lectures/models.py:47 lectures/models.py:48
 msgid "Meeting Info"
 msgstr "期数信息"
 
-#: lectures/models.py:50
+#: lectures/models.py:51
 #, python-brace-format
 msgid "{num} Meeting"
 msgstr "第{num}期"
 
-#: lectures/models.py:55
+#: lectures/models.py:56
 msgid "Topic"
 msgstr "标题"
 
-#: lectures/models.py:57
+#: lectures/models.py:58
 msgid "URL"
 msgstr "链接"
 
-#: lectures/models.py:61
+#: lectures/models.py:62
+msgid "Is Passed"
+msgstr "是否审核通过"
+
+#: lectures/models.py:63
 msgid "Is Finished"
 msgstr "是否已结束"
 
-#: lectures/models.py:64 lectures/models.py:65
+#: lectures/models.py:67 lectures/models.py:68
 msgid "Lecture Info"
 msgstr "课程信息"
+
+#: live/models.py:12 live/models.py:16 live/models.py:17
+#: templates/live/index.html:3
+msgid "Live Note"
+msgstr "直播须知"
+
+#: live/models.py:30 live/models.py:31
+msgid "External Live"
+msgstr "直播申请"
 
 #: templates/base.html:7
 msgid "New Finance Explorer"
@@ -213,12 +228,12 @@ msgstr "请输入您的评论："
 msgid "Submit Success!"
 msgstr "提交成功！"
 
-#: templates/feedbacks/comments.html:19
+#: templates/feedbacks/comments.html:20
 #: templates/feedbacks/user_comments.html:17
 msgid "Point"
 msgstr "分"
 
-#: templates/feedbacks/comments.html:20
+#: templates/feedbacks/comments.html:21
 #, python-format
 msgid ""
 "\n"
@@ -228,18 +243,19 @@ msgstr ""
 "\n"
 "%(month)s月%(day)s日 %(time)s"
 
-#: templates/feedbacks/comments.html:33
+#: templates/feedbacks/comments.html:36
 msgid "No Comments"
 msgstr "目前还没人评论"
 
 #: templates/feedbacks/common.html:9 templates/lectures/lecture.html:35
-#: templates/lectures/lectures.html:8 templates/records/records.html:14
+#: templates/lectures/lectures.html:8 templates/live/note.html:39
+#: templates/records/records.html:14
 #, python-format
 msgid "The %(number)s Meeting: "
 msgstr "第%(number)s期："
 
 #: templates/feedbacks/common.html:13 templates/lectures/lecture.html:39
-#: templates/records/records.html:18
+#: templates/live/note.html:43 templates/records/records.html:18
 #, python-format
 msgid ""
 "\n"
@@ -292,7 +308,7 @@ msgstr "课程信息"
 #: templates/lectures/lecture.html:45
 #, python-format
 msgid "Comments: %(comment_num)s  Score: %(comment_avg_score)s"
-msgstr "评论数：%(comment_num)s  评分数：%(comment_avg_score)s"
+msgstr "评论数：%(comment_num)s    评分数：%(comment_avg_score)s"
 
 #: templates/lectures/lecture.html:59
 msgid "Lecture Intro"
@@ -340,6 +356,81 @@ msgstr ""
 "\n"
 "时间：%(month)s月%(day)s日 %(time)s"
 
+#: templates/live/live.html:3
+#, fuzzy
+#| msgid "Apply Living"
+msgid "Apply Live"
+msgstr "申请直播"
+
+#: templates/live/live.html:22
+msgid "Please fill in the form below with live info:"
+msgstr ""
+
+#: templates/live/live.html:25 templates/live/live.html:27
+msgid "Live Topic"
+msgstr "直播主题"
+
+#: templates/live/live.html:31
+msgid "Appointment Time"
+msgstr ""
+
+#: templates/live/live.html:33
+msgid "Click here"
+msgstr "点此预约直播时间"
+
+#: templates/live/live.html:38
+msgid "Please enter the live introduction, less than 500 characters."
+msgstr "请输入直播介绍，不超过500字"
+
+#: templates/live/live.html:42
+msgid "Please fill in the form below with speaker info:"
+msgstr "填写讲师信息"
+
+#: templates/live/live.html:52
+msgid "Please enter the speaker introduction, less than 200 characters."
+msgstr "请输入讲师介绍，不超过200字"
+
+#: templates/live/note.html:6
+msgid "Apply New Live"
+msgstr "申请新的直播"
+
+#: templates/live/note.html:18
+msgid "Please Login and Be Certified"
+msgstr "请先登录并通过实名认证"
+
+#: templates/live/note.html:20
+msgid "Please Be Certified"
+msgstr "请先通过实名认证"
+
+#: templates/live/note.html:22
+msgid "Read and Apply"
+msgstr "已阅读并同意申请直播"
+
+#: templates/live/note.html:30
+msgid "Live Auditing"
+msgstr "正在审核"
+
+#: templates/live/note.html:53
+msgid "No Live Auditing"
+msgstr "暂时没有正在审核的直播申请"
+
+#: templates/live/note.html:59
+msgid "Apply Success Records"
+msgstr "已通过审核"
+
+#: templates/live/note.html:69 templates/records/records.html:44
+#, python-format
+msgid ""
+"\n"
+"            The %(number)s Meeting: %(speaker_name)s, "
+msgstr ""
+"\n"
+"第%(number)s期：%(speaker_name)s，"
+
+#: templates/live/note.html:80
+msgid "No Apply Success Records"
+msgstr "暂时没有通过审核的直播申请"
+
 #: templates/profiles/index.html:3 templates/tabbar.html:13
 msgid "Profile"
 msgstr "个人中心"
@@ -354,7 +445,8 @@ msgstr "点此登录"
 
 #: templates/profiles/profile.html:18
 msgid "Click here to be certified."
-msgstr "尚未实名制，联系管理员实名审核通过后开通课程评价功能，还能申请课程直播哦～"
+msgstr ""
+"尚未实名制，联系管理员实名审核通过后开通课程评价功能，还能申请课程直播哦～"
 
 #: templates/profiles/profile.html:28
 msgid "Company: "
@@ -365,30 +457,26 @@ msgid "Position: "
 msgstr "职务："
 
 #: templates/profiles/profile.html:39
-msgid "Living Note"
-msgstr "直播须知"
-
-#: templates/profiles/profile.html:46
 msgid "Apply Living"
 msgstr "申请直播"
 
-#: templates/profiles/profile.html:55
+#: templates/profiles/profile.html:48
 msgid "Favorites"
 msgstr "我收藏的"
 
-#: templates/profiles/profile.html:62
+#: templates/profiles/profile.html:55
 msgid "Uninterested"
 msgstr "我屏蔽的"
 
-#: templates/profiles/profile.html:71
+#: templates/profiles/profile.html:64
 msgid "Records History"
 msgstr "收听记录"
 
-#: templates/profiles/profile.html:78
+#: templates/profiles/profile.html:71
 msgid "Comments History"
 msgstr "评论记录"
 
-#: templates/profiles/profile.html:85
+#: templates/profiles/profile.html:78
 msgid "Questions History"
 msgstr "提问记录"
 
@@ -407,12 +495,3 @@ msgstr "暂时还没有收听记录"
 #: templates/records/records.html:34
 msgid "Finished"
 msgstr "已结束"
-
-#: templates/records/records.html:44
-#, python-format
-msgid ""
-"\n"
-"            The %(number)s Meeting: %(speaker_name)s, "
-msgstr ""
-"\n"
-"第%(number)s期：%(speaker_name)s，"

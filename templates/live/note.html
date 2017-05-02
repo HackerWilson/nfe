@@ -1,0 +1,86 @@
+{% extends "./index.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__hd">{% trans "Apply New Live" %}</div>
+  <div class="weui-panel__bd">
+    <div class="weui-cell" style="background-color: white;">
+      <div class="weui-cell__bd">
+        <article class="weui-article">
+          <ul>
+            {% for note in note_list %}
+            <li>{{ note }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+        {% if user.is_anonymous %}
+        <a href="{% url 'accounts.login' %}" class="weui-btn weui-btn_primary" id="login-btn">{% trans "Please Login and Be Certified" %}</a>
+        {% elif user.is_authenticated and not certified_user %}
+        <a href="{% url 'accounts.login' %}" class="weui-btn weui-btn_primary" id="login-btn">{% trans "Please Be Certified" %}</a>
+        {% elif user.is_authenticated and certified_user %}
+        <a href="{% url 'live.add_live' %}" class="weui-btn weui-btn_primary">{% trans "Read and Apply" %}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% if live_list %}
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__hd">{% trans "Live Auditing" %}</div>
+  <div class="weui-panel__bd">
+  {% for live in live_list %}
+    {% if not live.lecture.is_passed %}
+    <a href="{% url 'live.add_live' live.lecture.id %}" class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <img class="weui-media-box__thumb" src="{{ MEDIA_URL }}{{ live.lecture.speaker.picture }}" alt="">
+      </div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">{% blocktrans with number=live.lecture.meeting.number %}The {{ number }} Meeting: {% endblocktrans %}{{ live.lecture.topic }}</h4>
+        <p class="weui-media-box__desc">{{ live.lecture.speaker.intro }}</p>
+        <ul class="weui-media-box__info" style="color: black">
+          <li class="weui-media-box__info__meta">
+          {% blocktrans with month=live.lecture.time|date:"n" day=live.lecture.time|date:"j" time=live.lecture.time|time:"TIME_FORMAT" %}
+          Time: {{ month }} Month {{ day }} Day {{ time }}
+          {% endblocktrans %}
+          </li>
+        </ul>
+      </div>
+    </a>
+    {% endif %}
+  {% empty %}
+    <div class="weui-loadmore weui-loadmore_line">
+      <span class="weui-loadmore__tips">{% trans "No Live Auditing" %}</span>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__hd">{% trans "Apply Success Records" %}</div>
+  <div class="weui-panel__bd">
+  {% for live in live_list %}
+    {% if live.lecture.is_passed %}
+    <div class="weui-media-box weui-media-box_small-appmsg">
+      <div class="weui-cells">
+        <a class="weui-cell weui-cell_access" href="{% url 'lectures.lecture_detail' live.lecture.id %}">
+          <div class="weui-cell__hd"><img src="{{ MEDIA_URL }}{{ live.lecture.speaker.picture }}" alt="" style="width:20px;margin-right:5px;display:block"></div>
+          <div class="weui-cell__bd weui-cell_primary">
+            <p>
+            {% blocktrans with number=live.lecture.meeting.number speaker_name=live.lecture.speaker.name %}
+            The {{ number }} Meeting: {{ speaker_name }}, {% endblocktrans %}{{ live.lecture.topic }}
+            </p>
+          </div>
+          <span class="weui-cell__ft"></span>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+  {% empty %}
+    <div class="weui-loadmore weui-loadmore_line">
+      <span class="weui-loadmore__tips">{% trans "No Apply Success Records" %}</span>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endblock content %}

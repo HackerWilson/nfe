@@ -10,6 +10,6 @@ def show_profile(request):
 
     if user.is_authenticated:
         if user.first_name and user.last_name:
-            context = {'user': user, 'certified_user': True}
+            context['certified_user'] = True
 
     return render(request, 'profiles/profile.html', context)

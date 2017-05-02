@@ -7,8 +7,8 @@ from .models import Meeting, Lecture, Category, Speaker
 
 @admin.register(Lecture)
 class LectureAdmin(admin.ModelAdmin):
-    fields = ['time', 'topic', 'info', 'url', 'speaker', 'category', 'meeting', 'is_finished']
-    list_display = ('topic', 'time', 'speaker', 'category', 'meeting', 'is_finished')
+    fields = ['time', 'topic', 'info', 'url', 'speaker', 'category', 'meeting', 'is_passed', 'is_finished']
+    list_display = ('topic', 'time', 'speaker', 'category', 'meeting', 'is_passed', 'is_finished')
 
 
 @admin.register(Meeting)

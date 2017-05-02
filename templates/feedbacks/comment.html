@@ -13,7 +13,7 @@
           <label class="weui-label">{% trans "Scored: " %}</label>
         </div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="number" name="score" id="id_score" min="0" required>
+          <input class="weui-input" type="number" name="score" id="id_score" min="0" max="5" required readonly>
         </div>
         <div class="weui-cell__ft">
           <a href="javascript:;" class="weui-vcode-btn" id="score-btn">{% trans "Click to Score" %}</a>
@@ -24,7 +24,7 @@
           <textarea class="weui-textarea" placeholder="{% trans "Please enter your comment: " %}" rows="12" name="detail" id="id_detail" maxlength="200" required></textarea>
         <div>
       <div>
-      <div class="weui-btn-area">
+    <div class="weui-btn-area">
         <input type="submit" class="weui-btn weui-btn_primary">
       <div>
     </form>

@@ -8,9 +8,12 @@ from .models import Category, Lecture
 from feedbacks.models import Comment
 
 
-def list_categories(request):
+def list_categories(request, category_id='1'):
     category_list = Category.objects.all()
     context = {'category_list': category_list}
+
+    if category_id:
+        context['category_id'] = category_id
     return render(request, 'lectures/categories.html', context)
 
 

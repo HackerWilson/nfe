@@ -21,22 +21,20 @@
 {{ block.super }}
 <script>
 let loading = weui.loading('{% trans "loading" %}');
-setTimeout(function() {
-  loading.hide(function() {
-    let url = "{% url 'lectures.list_lectures' 1 %}";
-    $('#panel-content').load(url);
-  });
+loading.hide(function() {
+  let url = "{% url 'lectures.list_lectures' 0 %}".replace('0', '{{ category_id }}');
+  $('#panel-content').load(url);
+  $('#navbar-tab > div.weui-navbar__item').removeClass('weui-bar__item_on');
+  $('#navbar-tab > div:nth-child({{ category_id }})').addClass('weui-bar__item_on');
 });
 weui.tab('#navbar-tab',{
   defaultIndex: 0,
   onChange: function(index){
     $('#panel-content').empty();
     let loading = weui.loading('{% trans "loading" %}');
-    setTimeout(function() {
-      loading.hide(function() {
-        let url = "{% url 'lectures.list_lectures' 0 %}".replace('0', index + 1);
-        $('#panel-content').load(url);
-      });
+    loading.hide(function() {
+      let url = "{% url 'lectures.list_lectures' 0 %}".replace('0', index + 1);
+      $('#panel-content').load(url);
     });
   }
 });

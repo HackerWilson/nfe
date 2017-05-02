@@ -4,8 +4,7 @@ from __future__ import unicode_literals
 from django.utils import timezone
 from django.urls import reverse
 from django.http import Http404, JsonResponse, HttpResponseRedirect
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from .models import (
@@ -18,10 +17,12 @@ from accounts.models import User
 from lectures.models import Lecture
 
 
-@login_required
 def list_records(request):
-    record_list = Behavior.objects.filter(user__id=request.user.id, behavior='listened', is_visible=True).order_by('-time')
-    context = {'record_list': record_list}
+    user = request.user
+    record_list = []
+    if user.is_authenticated:
+        record_list = Behavior.objects.filter(user__id=request.user.id, behavior='listened', is_visible=True).order_by('-time')
+    context = {'user': user, 'record_list': record_list}
     return render(request, 'records/records.html', context)
 
 

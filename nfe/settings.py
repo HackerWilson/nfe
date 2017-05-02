@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'feedbacks.apps.FeedbacksConfig',
     'lectures.apps.LecturesConfig',
+    'live.apps.LiveConfig',
+    'profiles.apps.ProfilesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

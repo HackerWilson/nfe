@@ -33,14 +33,7 @@
   </div>
 </div>
 <div class="weui-cells">
-  <a class="weui-cell weui-cell_access" href="javascript:;">
-    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/living_note.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
-    <div class="weui-cell__bd">
-      <p>{% trans "Living Note" %}</p>
-    </div>
-    <div class="weui-cell__ft"></div>
-  </a>
-  <a class="weui-cell weui-cell_access" href="javascript:;">
+  <a class="weui-cell weui-cell_access" href="{% url 'live.live_note' %}">
     <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/apply_living.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
     <div class="weui-cell__bd">
       <p>{% trans "Apply Living" %}</p>
