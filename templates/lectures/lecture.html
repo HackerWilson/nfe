@@ -70,11 +70,11 @@
             <div class="weui-cell__bd"></div>
             <div class="weui-cell__ft">{% trans "Add Question" %}</div>
           </a>
-          <div class="weui-cell" style="padding: 0px, 0px;"></div>
+          <div class="weui-cell" style="padding: 0px;"></div>
           {% endif %}
           <div class="weui-cell__bd">
             <article class="weui-article">
-              {{ lecture.info }}
+              {{ lecture.info|safe }}
             </article>
           </div>
         </div>

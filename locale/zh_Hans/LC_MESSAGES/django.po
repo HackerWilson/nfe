@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-03 00:15+0800\n"
+"POT-Creation-Date: 2017-05-03 23:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -212,19 +212,19 @@ msgstr "取消"
 msgid "Add Comment"
 msgstr "添加评论"
 
-#: templates/feedbacks/comment.html:13
+#: templates/feedbacks/comment.html:27
 msgid "Scored: "
 msgstr "评分："
 
-#: templates/feedbacks/comment.html:19
+#: templates/feedbacks/comment.html:33
 msgid "Click to Score"
 msgstr "点此评分"
 
-#: templates/feedbacks/comment.html:24
+#: templates/feedbacks/comment.html:38
 msgid "Please enter your comment: "
 msgstr "请输入您的评论："
 
-#: templates/feedbacks/comment.html:63 templates/feedbacks/question.html:31
+#: templates/feedbacks/comment.html:77 templates/feedbacks/question.html:45
 msgid "Submit Success!"
 msgstr "提交成功！"
 
@@ -270,7 +270,7 @@ msgstr ""
 msgid "Add Question"
 msgstr "课程咨询"
 
-#: templates/feedbacks/question.html:13
+#: templates/feedbacks/question.html:27
 msgid "Please enter your question: "
 msgstr "请输入您的问题："
 
@@ -355,6 +355,10 @@ msgid ""
 msgstr ""
 "\n"
 "时间：%(month)s月%(day)s日 %(time)s"
+
+#: templates/lectures/lectures.html:20
+msgid "Supported by New Finance Explorer"
+msgstr "新金融前沿提供技术支持"
 
 #: templates/live/live.html:3
 msgid "Apply Live"

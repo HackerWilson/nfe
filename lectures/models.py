@@ -54,7 +54,7 @@ class Meeting(models.Model):
 class Lecture(models.Model):
     time = models.DateTimeField(_('Time'))
     topic = models.CharField(_('Topic'), max_length=50)
-    info = models.CharField(_('Info'), max_length=500, blank=True)
+    info = models.TextField(_('Info'), max_length=500, blank=True)
     url = models.URLField(_('URL'), max_length=300, blank=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE)
