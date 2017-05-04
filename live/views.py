@@ -40,10 +40,14 @@ def add_live(request, lecture_id=None):
         info = request.POST['info']
         speaker_name = request.POST['speaker_name']
         speaker_intro = request.POST['speaker_intro']
-        speaker_picture = request.FILES['speaker_picture']
+        speaker_picture = request.FILES.get('speaker_picture', '')
+        if speaker_picture:
+            speaker, _ = Speaker.objects.update_or_create(name=speaker_name,
+                                                          defaults={'intro': speaker_intro, 'picture': speaker_picture})
+        else:
+            speaker, _ = Speaker.objects.update_or_create(name=speaker_name,
+                                                          defaults={'intro': speaker_intro})
 
-        speaker, _ = Speaker.objects.update_or_create(name=speaker_name,
-                                                      defaults={'intro': speaker_intro, 'picture': speaker_picture})
         category = Category.objects.order_by('order').last()
         meeting = Meeting.objects.order_by('id').first()
         lecture, _ = Lecture.objects.update_or_create(topic=topic, speaker=speaker, meeting=meeting,
