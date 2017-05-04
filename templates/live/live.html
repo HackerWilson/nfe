@@ -24,18 +24,18 @@
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label" for="id_topic">{% trans "Live Topic" %}</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" type="text" name="topic" value={{ topic }} required id="id_topic" maxlength="50" placeholder="{% trans "Live Topic" %}">
+        <input class="weui-input" type="text" name="topic" value="{{ topic }}" required id="id_topic" maxlength="50" placeholder="{% trans "Live Topic" %}">
       </div>
     </div>
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label" for="id_time">{% trans "Appointment Time" %}</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" type="text" name="time" value={{ time }} required id="id_time" placeholder="{% trans "Click here" %}" readonly>
+        <input class="weui-input" type="text" name="time" value="{{ time }}" required id="id_time" placeholder="{% trans "Click here" %}" readonly>
       </div>
     </div>
     <div class="weui-cell">
       <div class="weui-cell__bd">
-        <textarea class="weui-textarea" type="text" rows="8" name="info" value={{ info }} required id="id_info" maxlength="500" placeholder="{% trans "Please enter the live introduction, less than 500 characters." %}"></textarea>
+        <textarea class="weui-textarea" type="text" rows="8" name="info" required id="id_info" maxlength="500" placeholder="{% trans "Please enter the live introduction, less than 500 characters." %}">{{ info }}</textarea>
       </div>
     </div>
   </div>
@@ -44,12 +44,12 @@
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label" for="id_speaker_name">{% trans "Speaker Name" %}</label></div>
       <div class="weui-cell__bd">
-        <input class="weui-input" type="text" name="speaker_name" value={{ speaker_name }} required id="id_speaker_name" maxlength="12" placeholder="{% trans "Speaker Name" %}">
+        <input class="weui-input" type="text" name="speaker_name" value="{{ speaker_name }}" required id="id_speaker_name" maxlength="12" placeholder="{% trans "Speaker Name" %}">
       </div>
     </div>
     <div class="weui-cell">
       <div class="weui-cell__bd">
-        <textarea class="weui-textarea" type="text" rows="5" name="speaker_intro" value={{ speaker_intro }} required id="id_speaker_intro" maxlength="200" placeholder="{% trans "Please enter the speaker introduction, less than 200 characters." %}"></textarea>
+        <textarea class="weui-textarea" type="text" rows="5" name="speaker_intro" required id="id_speaker_intro" maxlength="200" placeholder="{% trans "Please enter the speaker introduction, less than 200 characters." %}">{{ speaker_intro }}</textarea>
       </div>
     </div>
     <div class="weui-cell">
@@ -67,7 +67,6 @@
     <input type="submit" class="weui-btn weui-btn_primary" id="submit-btn">
   </div>
 </form>
-{{form}}
 {% endblock content %}
 
 {% block tabbar %}
