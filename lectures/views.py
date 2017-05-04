@@ -5,7 +5,7 @@ from django.db.models import Avg
 from django.shortcuts import render
 
 from .models import Category, Lecture
-from feedbacks.models import Comment
+from feedbacks.models import Comment, Behavior
 
 
 def list_categories(request, category_id='1'):
@@ -22,6 +22,12 @@ def list_lectures(request, category_id):
                        .order_by('-time')\
                        .values('id', 'topic', 'time', 'meeting__number', 'speaker__name', 'speaker__intro', 'speaker__picture')
     context = {'lecture_list': lecture_list}
+
+    user = request.user
+    if user.is_authenticated:
+        hidden_qs = Behavior.objects.filter(user__id=user.id, behavior='hide', is_visible=True).values_list('lecture__id', flat=True)
+        hidden_list = [obj for obj in hidden_qs]
+        context['hidden_list'] = hidden_list
     return render(request, 'lectures/lectures.html', context)
 
 

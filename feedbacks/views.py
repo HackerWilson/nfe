@@ -21,7 +21,7 @@ def list_records(request):
     user = request.user
     record_list = []
     if user.is_authenticated:
-        record_list = Behavior.objects.filter(user__id=request.user.id, behavior='listened', is_visible=True).order_by('-time')
+        record_list = Behavior.objects.filter(user__id=request.user.id, behavior='listened', is_visible=True).order_by('-time')[:10]
     context = {'user': user, 'record_list': record_list}
     return render(request, 'records/records.html', context)
 

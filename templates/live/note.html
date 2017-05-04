@@ -2,6 +2,7 @@
 {% load i18n %}
 
 {% block content %}
+{% if auditing_count <= 3 %}
 <div class="weui-panel weui-panel_access">
   <div class="weui-panel__hd">{% trans "Apply New Live" %}</div>
   <div class="weui-panel__bd">
@@ -25,6 +26,7 @@
     </div>
   </div>
 </div>
+{% endif %}
 {% if live_list %}
 <div class="weui-panel weui-panel_access">
   <div class="weui-panel__hd">{% trans "Live Auditing" %}</div>
