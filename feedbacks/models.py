@@ -12,7 +12,7 @@ class Comment(models.Model):
     score = models.PositiveSmallIntegerField(_('Score'))
     detail = models.CharField(_('Detail'), max_length=200, blank=True)
     time = models.DateTimeField(_('Time'))
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     lecture = models.ForeignKey(Lecture, on_delete=models.CASCADE)
     is_visible = models.BooleanField(_('Is Visible'), default=True)
 

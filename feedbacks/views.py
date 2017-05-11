@@ -72,10 +72,11 @@ def delete_behavior(request, behavior_id=None, behavior=None):
     return JsonResponse({'status': '200'})
 
 def list_lecture_comments(request, lecture_id=None):
-    comment_list = Comment.objects.filter(lecture__id=lecture_id, is_visible=True).order_by('-time')
-    context = {'lecture_id': lecture_id, 'comment_list': comment_list}
+    comment_qs = Comment.objects.filter(lecture__id=lecture_id, is_visible=True).order_by('-time')
+    context = {'lecture_id': lecture_id, 'comment_list': comment_qs}
 
-    if request.user.is_authenticated and request.user.has_perm('feedbacks.add_comment'):
+    user = request.user
+    if user.is_authenticated and user.has_perm('feedbacks.add_comment') and not comment_qs.filter(user=user):
         context['can_add_comment'] = True
     return render(request, 'feedbacks/comments.html', context)
 

@@ -2,5 +2,10 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from .models import MenuLink
 
-# Register your models here.
+
+@admin.register(MenuLink)
+class MenuLinkAdmin(admin.ModelAdmin):
+    fields = ['order', 'name', 'url', 'is_visible']
+    list_display = ('order', 'name', 'url', 'is_visible')

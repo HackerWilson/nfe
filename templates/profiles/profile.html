@@ -34,7 +34,6 @@
 </div>
 <div class="weui-cells">
   <a class="weui-cell weui-cell_access" href="{% url 'live.live_note' %}">
-    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/apply_living.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
     <div class="weui-cell__bd">
       <p>{% trans "Apply Living" %}</p>
     </div>
@@ -43,14 +42,12 @@
 </div>
 <div class="weui-cells">
   <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.list_behavior' behavior='favour' %}">
-    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/favorites.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
     <div class="weui-cell__bd">
       <p>{% trans "Favorites" %}</p>
     </div>
     <div class="weui-cell__ft"></div>
   </a>
   <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.list_behavior' behavior='hide' %}">
-    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/uninterested.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
     <div class="weui-cell__bd">
       <p>{% trans "Uninterested" %}</p>
     </div>
@@ -59,25 +56,33 @@
 </div>
 <div class="weui-cells">
   <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.list_behavior' behavior='listened' %}">
-    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/records_history.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
     <div class="weui-cell__bd">
       <p>{% trans "Records History" %}</p>
     </div>
     <div class="weui-cell__ft"></div>
   </a>
   <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.list_user_comments' %}">
-    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/comments_history.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
     <div class="weui-cell__bd">
       <p>{% trans "Comments History" %}</p>
     </div>
     <div class="weui-cell__ft"></div>
   </a>
   <a class="weui-cell weui-cell_access" href="{% url 'feedbacks.list_user_questions' %}">
-    <!-- <div class="weui-cell__hd"><img src="{% static "images/icons/questions_history.jpg" %}" alt="" style="width:20px;margin-right:5px;display:block"></div> -->
     <div class="weui-cell__bd">
       <p>{% trans "Questions History" %}</p>
     </div>
     <div class="weui-cell__ft"></div>
   </a>
+</div>
+<div class="weui-cells">
+  {% for menu in menu_list %}
+  <a class="weui-cell weui-cell_access" href="{{ menu.url }}">
+    <div class="weui-cell__bd">
+      <p>{{ menu.name }}</p>
+    </div>
+    <div class="weui-cell__ft"></div>
+  </a>
+  {% empty %}
+  {% endfor %}
 </div>
 {% endblock content %}

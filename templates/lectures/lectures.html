@@ -1,6 +1,5 @@
 {% load i18n staticfiles %}
 {% for lecture in lecture_list %}
-{% if lecture.id not in hidden_list %}
 <a href="{% url 'lectures.lecture_detail' lecture.id %}" class="weui-media-box weui-media-box_appmsg">
   <div class="weui-media-box__hd">
     <img class="weui-media-box__thumb" src="{{ MEDIA_URL }}{{ lecture.speaker__picture }}" alt="">
@@ -17,7 +16,6 @@
     </ul>
   </div>
 </a>
-{% endif %}
 {% empty %}
 {% endfor %}
 {% if lecture_list|length > 3 %}

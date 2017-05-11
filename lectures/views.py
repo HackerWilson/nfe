@@ -27,7 +27,10 @@ def list_lectures(request, category_id):
     if user.is_authenticated:
         hidden_qs = Behavior.objects.filter(user__id=user.id, behavior='hide', is_visible=True).values_list('lecture__id', flat=True)
         hidden_list = [obj for obj in hidden_qs]
-        context['hidden_list'] = hidden_list
+        for lecture in lecture_list:
+            if lecture.id in hidden_list:
+                lecture_list.remove(lecture)
+        context = {'lecture_list': lecture_list}
     return render(request, 'lectures/lectures.html', context)
 
 

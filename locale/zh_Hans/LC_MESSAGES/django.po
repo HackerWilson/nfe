@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-03 23:34+0800\n"
+"POT-Creation-Date: 2017-05-11 23:15+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgid "Time"
 msgstr "时间"
 
 #: feedbacks/models.py:17 feedbacks/models.py:32 feedbacks/models.py:58
-#: live/models.py:13 live/models.py:26
+#: live/models.py:13 live/models.py:26 profiles/models.py:12
 msgid "Is Visible"
 msgstr "是否可见"
 
@@ -100,13 +100,13 @@ msgstr "行为"
 msgid "Name"
 msgstr "名称"
 
-#: lectures/models.py:12
+#: lectures/models.py:12 profiles/models.py:9
 msgid "Order"
 msgstr "排序"
 
 #: lectures/models.py:17 lectures/models.py:18
 msgid "Lecture Category"
-msgstr "课程分类"
+msgstr "话题分类"
 
 #: lectures/models.py:25 live/forms.py:11 templates/live/live.html:45
 #: templates/live/live.html:47
@@ -164,7 +164,7 @@ msgstr "是否已结束"
 
 #: lectures/models.py:67 lectures/models.py:68
 msgid "Lecture Info"
-msgstr "课程信息"
+msgstr "话题信息"
 
 #: live/models.py:12 live/models.py:16 live/models.py:17
 #: templates/live/index.html:3
@@ -175,13 +175,25 @@ msgstr "直播须知"
 msgid "External Live"
 msgstr "直播申请"
 
+#: profiles/models.py:10
+msgid "Menu Name"
+msgstr "名称"
+
+#: profiles/models.py:11
+msgid "Menu URL"
+msgstr "链接"
+
+#: profiles/models.py:17 profiles/models.py:18
+msgid "MenuLink"
+msgstr "外链菜单"
+
 #: templates/base.html:7
 msgid "New Finance Explorer"
 msgstr "新金融前沿"
 
 #: templates/feedbacks/behaviors.html:3
-msgid "My "
-msgstr "我的"
+msgid " Records"
+msgstr "记录"
 
 #: templates/feedbacks/behaviors.html:12
 #, python-format
@@ -194,7 +206,7 @@ msgstr ""
 
 #: templates/feedbacks/behaviors.html:29
 msgid "View Lecture Detail"
-msgstr "查看课程信息"
+msgstr "查看话题信息"
 
 #: templates/feedbacks/behaviors.html:36
 msgid "Delete This"
@@ -204,7 +216,7 @@ msgstr "删除记录"
 msgid "Delete All"
 msgstr "删除所有记录"
 
-#: templates/feedbacks/behaviors.html:69 templates/lectures/lecture.html:180
+#: templates/feedbacks/behaviors.html:69 templates/lectures/lecture.html:176
 msgid "Cancel"
 msgstr "取消"
 
@@ -223,6 +235,14 @@ msgstr "点此评分"
 #: templates/feedbacks/comment.html:38
 msgid "Please enter your comment: "
 msgstr "请输入您的评论："
+
+#: templates/feedbacks/comment.html:58
+msgid "Soso"
+msgstr "中评"
+
+#: templates/feedbacks/comment.html:62
+msgid "Good"
+msgstr "好评"
 
 #: templates/feedbacks/comment.html:77 templates/feedbacks/question.html:45
 msgid "Submit Success!"
@@ -248,14 +268,14 @@ msgid "No Comments"
 msgstr "目前还没人评论"
 
 #: templates/feedbacks/common.html:9 templates/lectures/lecture.html:35
-#: templates/lectures/lectures.html:8 templates/live/note.html:39
+#: templates/lectures/lectures.html:8 templates/live/note.html:41
 #: templates/records/records.html:14
 #, python-format
 msgid "The %(number)s Meeting: "
 msgstr "第%(number)s期："
 
 #: templates/feedbacks/common.html:13 templates/lectures/lecture.html:39
-#: templates/live/note.html:43 templates/records/records.html:18
+#: templates/live/note.html:45 templates/records/records.html:18
 #, python-format
 msgid ""
 "\n"
@@ -268,7 +288,7 @@ msgstr ""
 
 #: templates/feedbacks/question.html:3 templates/lectures/lecture.html:71
 msgid "Add Question"
-msgstr "课程咨询"
+msgstr "问题咨询"
 
 #: templates/feedbacks/question.html:27
 msgid "Please enter your question: "
@@ -293,17 +313,17 @@ msgid "My Questions"
 msgstr "我的问题"
 
 #: templates/lectures/categories.html:23 templates/lectures/categories.html:34
-#: templates/lectures/lecture.html:122
+#: templates/lectures/lecture.html:118
 msgid "loading"
 msgstr "加载中"
 
 #: templates/lectures/index.html:3 templates/tabbar.html:5
 msgid "Lectures"
-msgstr "所有课程"
+msgstr "所有话题"
 
 #: templates/lectures/lecture.html:3
 msgid "Lecture Detail"
-msgstr "课程信息"
+msgstr "话题信息"
 
 #: templates/lectures/lecture.html:45
 #, python-format
@@ -312,7 +332,7 @@ msgstr "评论数：%(comment_num)s    评分数：%(comment_avg_score)s"
 
 #: templates/lectures/lecture.html:59
 msgid "Lecture Intro"
-msgstr "课程介绍"
+msgstr "话题介绍"
 
 #: templates/lectures/lecture.html:62
 msgid "Comments"
@@ -324,25 +344,21 @@ msgstr "请先登录"
 
 #: templates/lectures/lecture.html:98
 msgid "Sign up"
-msgstr "进入课程直播"
+msgstr "进入话题"
 
-#: templates/lectures/lecture.html:102
-msgid "Review Lecture"
-msgstr "课程回顾"
-
-#: templates/lectures/lecture.html:147
+#: templates/lectures/lecture.html:143
 msgid "Add to Favorites"
 msgstr "添加到收藏"
 
-#: templates/lectures/lecture.html:154
+#: templates/lectures/lecture.html:150
 msgid "Add to Favorites Success!"
 msgstr "添加成功！"
 
-#: templates/lectures/lecture.html:163
+#: templates/lectures/lecture.html:159
 msgid "Hide This"
-msgstr "屏蔽该课程"
+msgstr "屏蔽该话题"
 
-#: templates/lectures/lecture.html:170
+#: templates/lectures/lecture.html:166
 msgid "Hide Success!"
 msgstr "屏蔽成功！"
 
@@ -356,7 +372,7 @@ msgstr ""
 "\n"
 "时间：%(month)s月%(day)s日 %(time)s"
 
-#: templates/lectures/lectures.html:20
+#: templates/lectures/lectures.html:23
 msgid "Supported by New Finance Explorer"
 msgstr "新金融前沿提供技术支持"
 
@@ -392,35 +408,35 @@ msgstr "填写讲师信息"
 msgid "Please enter the speaker introduction, less than 200 characters."
 msgstr "请输入讲师介绍，不超过200字"
 
-#: templates/live/note.html:6
+#: templates/live/note.html:7
 msgid "Apply New Live"
 msgstr "申请新的直播"
 
-#: templates/live/note.html:18
+#: templates/live/note.html:19
 msgid "Please Login and Be Certified"
 msgstr "请先登录并通过实名认证"
 
-#: templates/live/note.html:20
+#: templates/live/note.html:21
 msgid "Please Be Certified"
 msgstr "请先通过实名认证"
 
-#: templates/live/note.html:22
+#: templates/live/note.html:23
 msgid "Read and Apply"
 msgstr "已阅读并同意申请直播"
 
-#: templates/live/note.html:30
+#: templates/live/note.html:32
 msgid "Live Auditing"
 msgstr "正在审核"
 
-#: templates/live/note.html:53
+#: templates/live/note.html:55
 msgid "No Live Auditing"
 msgstr "暂时没有正在审核的直播申请"
 
-#: templates/live/note.html:59
+#: templates/live/note.html:61
 msgid "Apply Success Records"
 msgstr "已通过审核"
 
-#: templates/live/note.html:69 templates/records/records.html:44
+#: templates/live/note.html:71 templates/records/records.html:44
 #, python-format
 msgid ""
 "\n"
@@ -429,7 +445,7 @@ msgstr ""
 "\n"
 "第%(number)s期：%(speaker_name)s，"
 
-#: templates/live/note.html:80
+#: templates/live/note.html:82
 msgid "No Apply Success Records"
 msgstr "暂时没有通过审核的直播申请"
 
@@ -448,7 +464,8 @@ msgstr "点此登录"
 #: templates/profiles/profile.html:18
 msgid "Click here to be certified."
 msgstr ""
-"尚未实名制，联系管理员实名审核通过后开通课程评价功能，还能申请课程直播哦～"
+"评价功能为实名制，请用企业邮箱发送 微信昵称 + 名片 至 verify@rainincrease."
+"com 申请开通"
 
 #: templates/profiles/profile.html:28
 msgid "Company: "
@@ -458,27 +475,27 @@ msgstr "公司："
 msgid "Position: "
 msgstr "职务："
 
-#: templates/profiles/profile.html:39
+#: templates/profiles/profile.html:38
 msgid "Apply Living"
 msgstr "申请直播"
 
-#: templates/profiles/profile.html:48
+#: templates/profiles/profile.html:46
 msgid "Favorites"
 msgstr "我收藏的"
 
-#: templates/profiles/profile.html:55
+#: templates/profiles/profile.html:52
 msgid "Uninterested"
 msgstr "我屏蔽的"
 
-#: templates/profiles/profile.html:64
+#: templates/profiles/profile.html:60
 msgid "Records History"
 msgstr "收听记录"
 
-#: templates/profiles/profile.html:71
+#: templates/profiles/profile.html:66
 msgid "Comments History"
 msgstr "评论记录"
 
-#: templates/profiles/profile.html:78
+#: templates/profiles/profile.html:72
 msgid "Questions History"
 msgstr "提问记录"
 

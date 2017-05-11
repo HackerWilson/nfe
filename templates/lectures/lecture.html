@@ -93,13 +93,9 @@
 <div class="weui-tabbar">
   <a href="{% url 'accounts.login' %}" class="weui-btn weui-btn_primary" id="login-btn">{% trans "Please Login" %}</a>
 </div>
-{% elif user.is_authenticated and not lecture.is_finished %}
+{% else %}
 <div class="weui-tabbar">
   <a class="weui-btn weui-btn_primary" id="signup-btn">{% trans "Sign up" %}</a>
-</div>
-{% elif user.is_authenticated and lecture.is_finished %}
-<div class="weui-tabbar">
-  <a class="weui-btn weui-btn_primary" id="signup-btn">{% trans "Review Lecture" %}</a>
 </div>
 {% endif %}
 {% endblock tabbar %}
