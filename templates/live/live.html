@@ -2,20 +2,6 @@
 {% load i18n %}
 {% block title %}{% trans "Apply Live" %}{% endblock title %}
 
-{% block css %}
-{{ block.super }}
-<style>
-#submit-btn {
-  border-radius: 0px;
-  width: 100%;
-}
-#submit-btn:after {
-  border: 0px;
-  border-radius: 0px;
-}
-</style>
-{% endblock css %}
-
 {% block content %}
 <form enctype="multipart/form-data" method="post" action="{% url 'live.add_live' %}">
   {% csrf_token %}
@@ -49,11 +35,6 @@
     </div>
     <div class="weui-cell">
       <div class="weui-cell__bd">
-        <textarea class="weui-textarea" type="text" rows="5" name="speaker_intro" required id="id_speaker_intro" maxlength="200" placeholder="{% trans "Please enter the speaker introduction, less than 200 characters." %}">{{ speaker_intro }}</textarea>
-      </div>
-    </div>
-    <div class="weui-cell">
-      <div class="weui-cell__bd">
         <div class="weui-uploader">
           <div class="weui-uploader__hd">
             <p class="weui-uploader__title">{% trans "Speaker Picture" %}</p>
@@ -64,10 +45,13 @@
         </div>
       </div>
     </div>
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <textarea class="weui-textarea" type="text" rows="5" name="speaker_intro" required id="id_speaker_intro" maxlength="200" placeholder="{% trans "Please enter the speaker introduction, less than 200 characters." %}">{{ speaker_intro }}</textarea>
+      </div>
+    </div>
   </div>
-  <div class="weui-tabbar">
-    <input type="submit" class="weui-btn weui-btn_primary" id="submit-btn">
-  </div>
+  <input type="submit" class="weui-btn weui-btn_primary">
 </form>
 {% endblock content %}
 

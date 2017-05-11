@@ -18,19 +18,14 @@ def list_categories(request, category_id='1'):
 
 
 def list_lectures(request, category_id):
-    lecture_list = Lecture.objects.filter(category__order=category_id, meeting__is_offline=False)\
-                       .order_by('-time')\
-                       .values('id', 'topic', 'time', 'meeting__number', 'speaker__name', 'speaker__intro', 'speaker__picture')
-    context = {'lecture_list': lecture_list}
-
+    lecture_qs = Lecture.objects.filter(category__order=category_id, meeting__is_offline=False)
     user = request.user
     if user.is_authenticated:
         hidden_qs = Behavior.objects.filter(user__id=user.id, behavior='hide', is_visible=True).values_list('lecture__id', flat=True)
         hidden_list = [obj for obj in hidden_qs]
-        for lecture in lecture_list:
-            if lecture.id in hidden_list:
-                lecture_list.remove(lecture)
-        context = {'lecture_list': lecture_list}
+        lecture_qs = lecture_qs.exclude(id__in=hidden_list)
+    lecture_list = lecture_qs.order_by('-time').values('id', 'topic', 'time', 'meeting__number', 'speaker__name', 'speaker__intro', 'speaker__picture')
+    context = {'lecture_list': lecture_list}
     return render(request, 'lectures/lectures.html', context)
 
 

@@ -33,7 +33,6 @@
       </div>
       <div class="weui-media-box__bd">
         <h4 class="weui-media-box__title">{% blocktrans with number=lecture.meeting.number %}The {{ number }} Meeting: {% endblocktrans %}{{ lecture.topic }}</h4>
-        <p class="weui-media-box__desc">{{ lecture.speaker.intro }}</p>
         <ul class="weui-media-box__info" style="color: black">
           <li class="weui-media-box__info__meta">
           {% blocktrans with month=lecture.time|date:"n" day=lecture.time|date:"j" time=lecture.time|time:"TIME_FORMAT" %}
@@ -74,7 +73,16 @@
           {% endif %}
           <div class="weui-cell__bd">
             <article class="weui-article">
-              {{ lecture.info|safe }}
+              <section>
+                <section>
+                  <h2>{% trans "Speaker Info" %}</h2>
+                  {{ lecture.speaker.intro|safe }}
+                </section>
+                <section>
+                  <h2>{% trans "Topic Info" %}</h2>
+                  {{ lecture.info|safe }}
+                </section>
+              </section>
             </article>
           </div>
         </div>
