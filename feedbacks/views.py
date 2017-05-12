@@ -92,7 +92,7 @@ def list_user_comments(request):
 @login_required
 def add_comment(request, lecture_id):
     if not request.user.has_perm('feedbacks.add_comment'):
-        return HttpResponseRedirect('root')
+        return HttpResponseRedirect(reverse('root'))
     if request.method == 'POST':
         score = request.POST['score']
         detail = request.POST['detail']
@@ -102,7 +102,7 @@ def add_comment(request, lecture_id):
         try:
             Comment.objects.create(score=score, detail=detail, time=time, user=user, lecture=lecture)
         except IntegrityError:
-            return HttpResponseRedirect('root')
+            return HttpResponseRedirect(reverse('root'))
         return HttpResponseRedirect(reverse('lectures.lecture_detail', args=[lecture_id]))
     else:
         lecture = get_object_or_404(Lecture, id=lecture_id)
