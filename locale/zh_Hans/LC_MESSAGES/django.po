@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-12 00:37+0800\n"
+"POT-Creation-Date: 2017-05-12 22:21+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,41 +58,41 @@ msgstr "职务"
 msgid "Score"
 msgstr "评分"
 
-#: feedbacks/models.py:13 feedbacks/models.py:28
+#: feedbacks/models.py:13 feedbacks/models.py:29
 msgid "Detail"
 msgstr "内容"
 
-#: feedbacks/models.py:14 feedbacks/models.py:29 feedbacks/models.py:52
+#: feedbacks/models.py:14 feedbacks/models.py:30 feedbacks/models.py:53
 #: lectures/models.py:41 lectures/models.py:55
 msgid "Time"
 msgstr "时间"
 
-#: feedbacks/models.py:17 feedbacks/models.py:32 feedbacks/models.py:58
+#: feedbacks/models.py:17 feedbacks/models.py:33 feedbacks/models.py:59
 #: live/models.py:13 live/models.py:26 profiles/models.py:12
 msgid "Is Visible"
 msgstr "是否可见"
 
-#: feedbacks/models.py:20 feedbacks/models.py:21
+#: feedbacks/models.py:21 feedbacks/models.py:22
 msgid "Comment"
 msgstr "评论"
 
-#: feedbacks/models.py:35 feedbacks/models.py:36
+#: feedbacks/models.py:36 feedbacks/models.py:37
 msgid "Question"
 msgstr "问题"
 
-#: feedbacks/models.py:43
+#: feedbacks/models.py:44
 msgid "Hidden"
 msgstr "屏蔽"
 
-#: feedbacks/models.py:44
+#: feedbacks/models.py:45
 msgid "Favourite"
 msgstr "收藏"
 
-#: feedbacks/models.py:45
+#: feedbacks/models.py:46
 msgid "Listened"
 msgstr "收听"
 
-#: feedbacks/models.py:54 feedbacks/models.py:63 feedbacks/models.py:64
+#: feedbacks/models.py:55 feedbacks/models.py:64 feedbacks/models.py:65
 msgid "Behavior"
 msgstr "行为"
 
@@ -108,8 +108,8 @@ msgstr "排序"
 msgid "Lecture Category"
 msgstr "话题分类"
 
-#: lectures/models.py:25 live/forms.py:11 templates/live/live.html:31
-#: templates/live/live.html:33
+#: lectures/models.py:25 live/forms.py:11 templates/live/live.html:35
+#: templates/live/live.html:37
 msgid "Speaker Name"
 msgstr "讲师姓名"
 
@@ -117,7 +117,7 @@ msgstr "讲师姓名"
 msgid "Speaker Info"
 msgstr "讲师介绍"
 
-#: lectures/models.py:27 live/forms.py:13 templates/live/live.html:40
+#: lectures/models.py:27 live/forms.py:13 templates/live/live.html:44
 msgid "Speaker Picture"
 msgstr "讲师照片"
 
@@ -384,31 +384,31 @@ msgstr "天听提供技术支持"
 msgid "Apply Live"
 msgstr "申请直播"
 
-#: templates/live/live.html:8
+#: templates/live/live.html:12
 msgid "Please fill in the form below with live info:"
 msgstr "填写直播信息"
 
-#: templates/live/live.html:11 templates/live/live.html:13
+#: templates/live/live.html:15 templates/live/live.html:17
 msgid "Live Topic"
 msgstr "直播主题"
 
-#: templates/live/live.html:17
+#: templates/live/live.html:21
 msgid "Appointment Time"
 msgstr "预约时间"
 
-#: templates/live/live.html:19
+#: templates/live/live.html:23
 msgid "Click here"
 msgstr "点此预约直播时间"
 
-#: templates/live/live.html:24
+#: templates/live/live.html:28
 msgid "Please enter the live introduction, less than 500 characters."
 msgstr "请输入直播介绍，不超过500字"
 
-#: templates/live/live.html:28
+#: templates/live/live.html:32
 msgid "Please fill in the form below with speaker info:"
 msgstr "填写讲师信息"
 
-#: templates/live/live.html:50
+#: templates/live/live.html:54
 msgid "Please enter the speaker introduction, less than 200 characters."
 msgstr "请输入讲师介绍，不超过200字"
 

@@ -3,7 +3,11 @@
 {% block title %}{% trans "Apply Live" %}{% endblock title %}
 
 {% block content %}
+{% if lecture_id %}
+<form enctype="multipart/form-data" method="post" action="{% url 'live.add_live' lecture_id %}">
+{% else %}
 <form enctype="multipart/form-data" method="post" action="{% url 'live.add_live' %}">
+{% endif %}
   {% csrf_token %}
   <div class="weui-cells__title">{% trans "Please fill in the form below with live info:" %}</div>
   <div class="weui-cells weui-cells_form">

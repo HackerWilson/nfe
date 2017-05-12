@@ -41,18 +41,30 @@ def add_live(request, lecture_id=None):
         speaker_name = request.POST['speaker_name']
         speaker_intro = request.POST['speaker_intro']
         speaker_picture = request.FILES.get('speaker_picture', '')
-        if speaker_picture:
-            speaker, _ = Speaker.objects.update_or_create(name=speaker_name,
-                                                          defaults={'intro': speaker_intro, 'picture': speaker_picture})
-        else:
-            speaker, _ = Speaker.objects.update_or_create(name=speaker_name,
-                                                          defaults={'intro': speaker_intro})
-
         category = Category.objects.order_by('order').last()
         meeting = Meeting.objects.order_by('id').first()
-        lecture, _ = Lecture.objects.update_or_create(topic=topic, speaker=speaker, meeting=meeting,
-                                                      defaults={'time': lecture_time, 'info': info,
-                                                                'category': category, 'is_passed': False})
+        if not lecture_id:
+            if speaker_picture:
+                speaker = Speaker.objects.create(name=speaker_name,
+                                                 defaults={'intro': speaker_intro, 'picture': speaker_picture})
+            else:
+                speaker = Speaker.objects.create(name=speaker_name,
+                                                 defaults={'intro': speaker_intro})
+            lecture = Lecture.objects.create(topic=topic, speaker=speaker, meeting=meeting,
+                                             defaults={'time': lecture_time, 'info': info,
+                                                       'category': category, 'is_passed': False})
+        else:
+            lecture = get_object_or_404(Lecture, id=lecture_id)
+            speaker = get_object_or_404(Speaker, id=lecture.speaker__id)
+            speaker.intro = speaker_intro
+            if speaker_picture:
+                speaker.picture = speaker_picture
+            speaker.save()
+
+            lecture.topic = topic
+            lecture.time = time
+            lecture.info = info
+            lecture.save()
         user = get_object_or_404(User, id=request.user.id)
         UserLive.objects.update_or_create(user=user, lecture=lecture)
         return HttpResponseRedirect(reverse('lectures.list_categories', args=[category.order]))
@@ -61,6 +73,7 @@ def add_live(request, lecture_id=None):
         if lecture_id:
             lecture_form = LectureForm()
             lecture = get_object_or_404(Lecture, id=lecture_id)
+            context['lecture_id'] = lecture_id
             context['topic'] = lecture.topic
             context['time'] = lecture.time.strftime("%Y-%m-%d")
             context['info'] = lecture.info
