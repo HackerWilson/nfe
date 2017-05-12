@@ -2,7 +2,11 @@
 {% for lecture in lecture_list %}
 <a href="{% url 'lectures.lecture_detail' lecture.id %}" class="weui-media-box weui-media-box_appmsg">
   <div class="weui-media-box__hd">
+    {% if lecture.speaker__picture %}
     <img class="weui-media-box__thumb" src="{{ MEDIA_URL }}{{ lecture.speaker__picture }}" alt="">
+    {% else %}
+    <img class="weui-media-box__thumb" src="{% static "images/icons/speaker_default.png" %}" alt="">
+    {% endif %}
   </div>
   <div class="weui-media-box__bd">
     <h4 class="weui-media-box__title">{% blocktrans with number=lecture.meeting__number %}The {{ number }} Meeting: {% endblocktrans %}{{ lecture.topic }}</h4>

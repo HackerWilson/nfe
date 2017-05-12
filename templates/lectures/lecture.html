@@ -1,5 +1,5 @@
 {% extends "./index.html" %}
-{% load i18n %}
+{% load i18n staticfiles %}
 {% block title %}{% trans "Lecture Detail" %}{% endblock title %}
 
 {% block css %}
@@ -29,7 +29,11 @@
   <div class="weui-panel__bd">
     <a class="weui-media-box weui-media-box_appmsg" id="action-menu">
       <div class="weui-media-box__hd">
+        {% if lecture.speaker.picture %}
         <img class="weui-media-box__thumb" src="{{ MEDIA_URL }}{{ lecture.speaker.picture }}" alt="">
+        {% else %}
+        <img class="weui-media-box__thumb" src="{% static "images/icons/speaker_default.png" %}" alt="">
+        {% endif %}
       </div>
       <div class="weui-media-box__bd">
         <h4 class="weui-media-box__title">{% blocktrans with number=lecture.meeting.number %}The {{ number }} Meeting: {% endblocktrans %}{{ lecture.topic }}</h4>
@@ -101,6 +105,7 @@
 <div class="weui-tabbar">
   <a href="{% url 'accounts.login' %}" class="weui-btn weui-btn_primary" id="login-btn">{% trans "Please Login" %}</a>
 </div>
+{% elif user.is_authenticated and not lecture.is_passed %}
 {% else %}
 <div class="weui-tabbar">
   <a class="weui-btn weui-btn_primary" id="signup-btn">{% trans "Sign up" %}</a>

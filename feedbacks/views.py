@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.utils import timezone
 from django.urls import reverse
+from django.db import IntegrityError
 from django.http import Http404, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -98,7 +99,10 @@ def add_comment(request, lecture_id):
         time = timezone.now()
         user = get_object_or_404(User, id=request.user.id)
         lecture = get_object_or_404(Lecture, id=lecture_id)
-        Comment.objects.create(score=score, detail=detail, time=time, user=user, lecture=lecture)
+        try:
+            Comment.objects.create(score=score, detail=detail, time=time, user=user, lecture=lecture)
+        except IntegrityError:
+            return HttpResponseRedirect('root')
         return HttpResponseRedirect(reverse('lectures.lecture_detail', args=[lecture_id]))
     else:
         lecture = get_object_or_404(Lecture, id=lecture_id)

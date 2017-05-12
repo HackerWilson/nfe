@@ -15,9 +15,9 @@
         <div class="weui-cell">
           <div class="weui-cell__hd"><img src="{{ comment.user.headimgurl }}" alt="" style="width:20px;margin-right:5px;display:block"></div>
           <div class="weui-cell__bd">
-            <p style="font-size: 14px;">{{ comment.user.last_name }}{{ comment.user.first_name }}, {{ comment.user.company }}</p>
+            <p style="font-size: 14px;">{{ comment.user.last_name }}{{ comment.user.first_name }}({{ comment.user.company }})</p>
           </div>
-          <span class="weui-cell__ft" style="font-size: 13px;">{{ comment.score }} {% trans "Point" %} | 
+          <span class="weui-cell__ft" style="font-size: 13px;">{{ comment.score }} {% trans "Point" %} |
           {% blocktrans with month=comment.time|date:"n" day=comment.time|date:"j" time=comment.time|time:"TIME_FORMAT" %}
             {{ month }} Month {{ day }} Day {{ time }}
           {% endblocktrans %}
