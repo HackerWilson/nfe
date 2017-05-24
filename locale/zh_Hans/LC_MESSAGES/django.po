@@ -378,7 +378,7 @@ msgstr ""
 
 #: templates/lectures/lectures.html:23
 msgid "Supported by New Finance Explorer"
-msgstr "天听提供技术支持"
+msgstr "雨添科技提供技术支持"
 
 #: templates/live/live.html:3
 msgid "Apply Live"
