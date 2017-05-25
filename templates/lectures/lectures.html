@@ -9,7 +9,7 @@
     {% endif %}
   </div>
   <div class="weui-media-box__bd">
-    <h4 class="weui-media-box__title">{% blocktrans with number=lecture.meeting__number %}The {{ number }} Meeting: {% endblocktrans %}{{ lecture.topic }}</h4>
+    <h4 class="weui-media-box__title">{{ lecture.topic }}</h4>
     <p class="weui-media-box__desc">{{ lecture.speaker__intro }}</p>
     <ul class="weui-media-box__info" style="color: black">
       <li class="weui-media-box__info__meta">
