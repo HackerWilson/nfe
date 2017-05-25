@@ -339,7 +339,7 @@ msgstr "评论"
 #: templates/lectures/lecture.html:82
 #, python-format
 msgid "The %(number)s Meeting"
-msgstr "第%(number)s期话题"
+msgstr "第%(number)s期"
 
 #: templates/lectures/lecture.html:87
 msgid "Topic Info"
@@ -471,7 +471,7 @@ msgstr "点此登录"
 #: templates/profiles/profile.html:18
 msgid "Click here to be certified."
 msgstr ""
-"评价功能为实名制，请用企业邮箱发送 微信昵称+名片 至 verify@rainincrease.com 申请开通"
+"评论为实名制，请用企业邮箱发送 微信昵称+名片 至 verify@rainincrease.com 申请开通"
 
 #: templates/profiles/profile.html:28
 msgid "Company: "
