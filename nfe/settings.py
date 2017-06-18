@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'lectures.apps.LecturesConfig',
     'live.apps.LiveConfig',
     'profiles.apps.ProfilesConfig',
+    'adminsortable2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

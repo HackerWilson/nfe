@@ -9,7 +9,7 @@ from utils.utils import upload_speakerimage
 
 class Category(models.Model):
     name = models.CharField(_('Name'), max_length=12)
-    order = models.PositiveIntegerField(_('Order'))
+    order = models.PositiveIntegerField(_('Order'), default=0)
 
     class Meta:
         ordering = ('order', )
@@ -38,6 +38,7 @@ class Speaker(models.Model):
 
 class Meeting(models.Model):
     number = models.PositiveIntegerField(_('Number'), unique=True)
+    name = models.CharField(_('Name'), max_length=12, blank=True)
     time = models.DateTimeField(_('Time'))
     info = models.CharField(_('Info'), max_length=1000, blank=True)
     is_offline = models.BooleanField(_('Is Offline'), default=False)
@@ -52,6 +53,7 @@ class Meeting(models.Model):
 
 
 class Lecture(models.Model):
+    order = models.PositiveIntegerField(_('Order'), default=0)
     time = models.DateTimeField(_('Time'))
     topic = models.CharField(_('Topic'), max_length=50)
     info = models.TextField(_('Info'), max_length=500, blank=True)
@@ -63,6 +65,7 @@ class Lecture(models.Model):
     is_finished = models.BooleanField(_('Is Finished'), default=False)
 
     class Meta:
+        ordering = ('order', )
         unique_together = ("topic", "speaker", "meeting")
         verbose_name = _('Lecture Info')
         verbose_name_plural = _('Lecture Info')

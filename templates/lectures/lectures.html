@@ -11,11 +11,22 @@
   <div class="weui-media-box__bd">
     <h4 class="weui-media-box__title">{{ lecture.topic }}</h4>
     <p class="weui-media-box__desc">{{ lecture.speaker__intro }}</p>
-    <ul class="weui-media-box__info" style="color: black">
+    <ul class="weui-media-box__info">
+      {% if lecture.meeting__name %}
       <li class="weui-media-box__info__meta">
+      {{ lecture.meeting__name }}
+      {% for meeting_number, count in meeting_dict.items %}
+        {% if meeting_number == lecture.meeting__number %}
+        {% blocktrans %} | Now {{count}} Topics{% endblocktrans %}
+        {% endif %}
+      {% endfor %}
+      </li>
+      {% else %}
+      <li class="weui-media-box__info__meta" style="color: black">
       {% blocktrans with month=lecture.time|date:"n" day=lecture.time|date:"j" time=lecture.time|time:"TIME_FORMAT" %}
       Time: {{ month }} Month {{ day }} Day {{ time }}
       {% endblocktrans %}
+      {% endif %}
       </li>
     </ul>
   </div>
