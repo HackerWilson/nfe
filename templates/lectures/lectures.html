@@ -13,7 +13,7 @@
     <p class="weui-media-box__desc">{{ lecture.speaker__intro }}</p>
     <ul class="weui-media-box__info">
       {% if lecture.meeting__name %}
-      <li class="weui-media-box__info__meta">
+      <li class="weui-media-box__info__meta" style="color: black">
       {{ lecture.meeting__name }}
       {% for meeting_number, count in meeting_dict.items %}
         {% if meeting_number == lecture.meeting__number %}
